@@ -108,7 +108,6 @@ export default async function CalculatorPage({
         <CalculatorContentSection
           content={content}
           locale={normalizedLocale}
-          calculator={calculator}
         />
       )}
       <RelatedCalculators currentSlug={slug} locale={normalizedLocale} />

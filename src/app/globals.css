@@ -3,65 +3,92 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 30 30% 96%;
+  --foreground: 228 23% 9%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 228 23% 11%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover: 30 30% 96%;
+  --popover-foreground: 228 23% 12%;
 
-  --primary: 20 90% 50%;
+  --primary: 25 100% 55%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 247 100% 68%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 210 40% 96%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 327 14% 87%;
+  --muted-foreground: 228 15% 35%;
 
-  --accent: 25 95% 53%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 42 100% 70%;
+  --accent-foreground: 228 23% 18%;
 
-  --destructive: 0 84.2% 60.2%;
+  --destructive: 0 100% 65%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --success: 168 100% 36%;
+  --success-foreground: 0 0% 10%;
 
-  --radius: 0.75rem;
+  --warning: 42 100% 60%;
+  --warning-foreground: 0 0% 12%;
+
+  --info: 196 100% 47%;
+  --info-foreground: 0 0% 100%;
+
+  --surface: 219 24% 16%;
+  --surface-foreground: 210 45% 95%;
+
+  --border: 30 24% 86%;
+  --input: 30 20% 82%;
+  --ring: 25 100% 55%;
+
+  --shadow-soft: 25 90% 88%;
+  --shadow-strong: 219 24% 16%;
+
+  --radius: 1.25rem;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
+  --background: 219 24% 10%;
+  --foreground: 210 45% 96%;
 
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
+  --card: 219 24% 14%;
+  --card-foreground: 210 45% 96%;
 
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 219 24% 12%;
+  --popover-foreground: 210 45% 96%;
 
-  --primary: 20 90% 65%;
-  --primary-foreground: 0 0% 0%;
+  --primary: 25 100% 50%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 247 100% 70%;
+  --secondary-foreground: 0 0% 0%;
 
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 219 20% 18%;
+  --muted-foreground: 210 20% 72%;
 
-  --accent: 16 85% 55%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 42 100% 65%;
+  --accent-foreground: 219 24% 16%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  --success: 161 70% 40%;
+  --success-foreground: 0 0% 8%;
+
+  --warning: 37 92% 58%;
+  --warning-foreground: 0 0% 9%;
+
+  --info: 196 97% 60%;
+  --info-foreground: 219 24% 14%;
+
+  --surface: 219 24% 18%;
+  --surface-foreground: 210 45% 96%;
+
+  --border: 219 20% 26%;
+  --input: 219 20% 24%;
+  --ring: 25 100% 60%;
 }
 
 * {
@@ -74,6 +101,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 122, 24, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(111, 91, 255, 0.18), transparent 35%);
 }
 
 body::before {
@@ -82,9 +111,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.04), transparent 0);
-  background-size: 24px 24px;
-  opacity: 0.4;
+  background-image: radial-gradient(circle at 2px 2px, rgba(17, 19, 27, 0.07), transparent 0);
+  background-size: 28px 28px;
+  opacity: 0.35;
 }
 
 /* Smooth scrolling */
@@ -94,7 +123,13 @@ html {
 
 /* Better focus styles for accessibility */
 *:focus-visible {
-  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-primary/80 ring-offset-2 ring-offset-background;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+::selection {
+  background-color: hsl(var(--primary) / 0.15);
+  color: hsl(var(--foreground));
 }
 
 /* Mobile optimizations */
@@ -164,23 +199,118 @@ body.menu-open {
   }
 }
 
+/* Ensure mobile menu is always visible */
+[role="dialog"][aria-modal="true"] {
+  position: fixed !important;
+  z-index: 9999 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 .bg-grid-soft {
   background-image: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.04) 1px,
+      rgba(255, 255, 255, 0.08) 1px,
       transparent 0
     ),
     linear-gradient(
-      rgba(255, 255, 255, 0.04) 1px,
+      rgba(255, 255, 255, 0.08) 1px,
       transparent 0
     );
   background-size: 20px 20px;
 }
 
 .surface-panel {
-  @apply rounded-3xl border border-border/60 bg-card/90 shadow-lg shadow-black/5;
+  @apply rounded-[32px] border border-border/50 bg-card/95 shadow-[0_10px_50px_rgba(17,19,27,0.07)] backdrop-blur-xl;
 }
 
 .surface-section {
-  @apply rounded-3xl border border-border/50 bg-muted/30 p-6 sm:p-8;
+  @apply rounded-[28px] border border-border/50 bg-card/80 p-6 sm:p-8 shadow-[0_15px_35px_rgba(17,19,27,0.04)];
+}
+
+.glass-panel {
+  @apply border border-white/30 bg-white/70 dark:bg-surface/70 backdrop-blur-xl shadow-[0_10px_40px_rgba(17,19,27,0.08)];
+}
+
+.glow-ring {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow-ring::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-ring:hover::after,
+.glow-ring:focus-visible::after {
+  opacity: 1;
+}
+
+.skeleton {
+  background: linear-gradient(
+    110deg,
+    hsl(var(--muted) / 0.7) 8%,
+    hsl(var(--muted) / 0.9) 18%,
+    hsl(var(--muted) / 0.7) 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+.card-grid-stagger > * {
+  animation: card-stagger 0.45s ease both;
+}
+
+.card-grid-stagger > *:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.card-grid-stagger > *:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.card-grid-stagger > *:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.card-grid-stagger > *:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.card-grid-stagger > *:nth-child(6) {
+  animation-delay: 0.25s;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes card-stagger {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

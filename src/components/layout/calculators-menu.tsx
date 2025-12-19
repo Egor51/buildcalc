@@ -32,9 +32,9 @@ export function CalculatorsMenu({ calculators, locale, dictionary }: Props) {
         }
       }}
     >
-      <SelectTrigger className="w-9 h-9 sm:w-[200px] sm:h-10 px-2 sm:px-3 justify-center sm:justify-between">
+      <SelectTrigger className="h-10 w-10 sm:w-[200px] sm:h-10 px-0 sm:px-3 justify-center sm:justify-between rounded-xl">
         <Calculator className="h-4 w-4 flex-shrink-0" />
-        <span className="hidden sm:inline-block min-w-0 flex-1">
+        <span className="hidden sm:inline-block min-w-0 flex-1 text-left">
           <SelectValue placeholder={dictionary.allCalculators} />
         </span>
       </SelectTrigger>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/lib/config/site";
 import { getRelatedCalculators } from "@/lib/content/loader";
-import { getRelatedCalculatorSlugs } from "@/lib/content/relations";
 import { getCalculators } from "@/lib/server/calculators";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

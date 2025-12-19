@@ -6,7 +6,6 @@ import { StructuredData } from "@/lib/seo/structured-data";
 import type { Locale } from "@/lib/config/site";
 import { locales } from "@/lib/config/site";
 import { generateGuideMetadata } from "@/lib/seo/metadata";
-import { getDictionary } from "@/lib/i18n";
 import { getCalculatorBySlug } from "@/lib/server/calculators";
 import { getGuideContent } from "@/lib/content/guide-loader";
 import { getRelatedCalculators } from "@/lib/content/loader";
@@ -14,8 +13,6 @@ import { getCalculators } from "@/lib/server/calculators";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalculatorCard } from "@/components/catalog/calculator-card";
-import { categoryMeta } from "@/components/catalog/catalog-explorer";
 import { CALCULATOR_DEFINITIONS } from "@/lib/calc/definitions";
 
 type PageProps = {
@@ -67,7 +64,6 @@ export default async function GuidePage({ params }: PageProps) {
     notFound();
   }
   
-  const dictionary = getDictionary(normalizedLocale);
   const guideContent = await getGuideContent(slug, normalizedLocale);
   
   // Fallback to calculator.guide if MDX guide doesn't exist

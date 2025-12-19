@@ -33,7 +33,7 @@ export const CountrySelect = ({
         >
           <SelectValue placeholder="Country">{country.nameLocalized}</SelectValue>
         </SelectTrigger>
-        <SelectContent align="end" className="max-h-[300px]">
+        <SelectContent align="end" className="max-h-[300px] z-[80]">
           {countries.map((item) => (
             <SelectItem
               key={item.countryCode}

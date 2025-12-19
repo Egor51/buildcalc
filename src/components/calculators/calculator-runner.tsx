@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   Box,
   CopyIcon,
+  Download,
   Gauge,
   Info,
   Layers,
@@ -14,11 +15,13 @@ import {
   Settings2,
   ShieldCheck,
   Sparkles,
+  Share2,
   Square,
 } from "lucide-react";
 
 import { useCountry } from "@/components/providers/country-provider";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -27,6 +30,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/config/site";
 import type { Dictionary } from "@/lib/i18n";
@@ -148,6 +152,44 @@ const convertSiUnitToUser = (
   return value;
 };
 
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+
+const PRESETS = [
+  {
+    id: "eco",
+    label: { en: "Economy", ru: "Эконом" },
+    description: {
+      en: "Reduces defaults by 15% with lower waste.",
+      ru: "Уменьшает значения на 15% и снижает запас.",
+    },
+    multiplier: 0.85,
+    wasteAdjustment: -0.02,
+  },
+  {
+    id: "standard",
+    label: { en: "Standard", ru: "Типовой" },
+    description: {
+      en: "Balanced values for most projects.",
+      ru: "Сбалансированные параметры для большинства проектов.",
+    },
+    multiplier: 1,
+    wasteAdjustment: 0,
+  },
+  {
+    id: "premium",
+    label: { en: "Premium", ru: "Премиум" },
+    description: {
+      en: "Boosts coverage with extra 15% reserves.",
+      ru: "Увеличивает объём и добавляет 15% запаса.",
+    },
+    multiplier: 1.15,
+    wasteAdjustment: 0.03,
+  },
+] as const;
+
+type PresetId = (typeof PRESETS)[number]["id"];
+
 export const CalculatorRunner = ({
   calculator,
   dictionary,
@@ -164,6 +206,7 @@ export const CalculatorRunner = ({
       : baseWaste,
   );
   const [copied, setCopied] = useState(false);
+  const [selectedPreset, setSelectedPreset] = useState<PresetId>("standard");
 
   const initialValues = useMemo(() => {
     const values: Record<string, string | number | boolean> = {};
@@ -290,7 +333,7 @@ export const CalculatorRunner = ({
     };
   });
 
-  const handleCopyLink = async () => {
+  const buildShareUrl = () => {
     const params = new URLSearchParams();
     Object.entries(values).forEach(([key, value]) => {
       if (value === undefined || value === "") return;
@@ -299,15 +342,72 @@ export const CalculatorRunner = ({
     params.set("waste", String((waste * 100).toFixed(2)));
     const url = new URL(window.location.href);
     url.search = params.toString();
-    await navigator.clipboard.writeText(url.toString());
+    return url.toString();
+  };
+
+  const handleCopyLink = async () => {
+    if (typeof window === "undefined") return;
+    const shareUrl = buildShareUrl();
+    await navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
+  };
+
+  const handleShare = async () => {
+    if (typeof window === "undefined") return;
+    const shareUrl = buildShareUrl();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: calculator.title,
+          text: calculator.description,
+          url: shareUrl,
+        });
+        return;
+      } catch {
+        // fallback to clipboard
+      }
+    }
+    await navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const handleDownload = () => {
+    if (typeof window === "undefined") return;
+    window.print();
   };
 
   const helperTextFor = (
     field: (typeof visibleInputs)[number],
     unit: string,
   ) => field.description ?? dictionary.calc.helperDefault.replace("{unit}", unit || dictionary.home.userUnits);
+
+  const applyPreset = (presetId: PresetId) => {
+    const preset = PRESETS.find((item) => item.id === presetId);
+    if (!preset) return;
+    setSelectedPreset(presetId);
+    startTransition(() => {
+      setWaste(() => clamp(baseWaste + preset.wasteAdjustment, 0, 0.35));
+      if (preset.multiplier === 1) {
+        setValues(initialValues);
+        return;
+      }
+      setValues((prev) => {
+        const next = { ...prev };
+        calculator.inputs.forEach((field) => {
+          if (field.kind !== "number") return;
+          const baseline =
+            typeof prev[field.id] === "number" ||
+            (typeof prev[field.id] === "string" && prev[field.id] !== "")
+              ? Number(prev[field.id])
+              : Number(initialValues[field.id] ?? 0);
+          next[field.id] = Number((baseline * preset.multiplier).toFixed(2));
+        });
+        return next;
+      });
+    });
+  };
 
   const mainRow = resultRows[0];
   const detailRows = resultRows.slice(1);
@@ -319,37 +419,65 @@ export const CalculatorRunner = ({
     unitTab === "user" ? row.userUnit : row.siUnit;
   const withWasteValue = mainRow ? displayValue(mainRow) : 0;
   const baseValue = mainRow ? withWasteValue / (1 + waste) : 0;
+  const completedFields = visibleInputs.reduce((count, field) => {
+    const currentValue = values[field.id];
+    if (field.kind === "number") {
+      return currentValue !== "" && !Number.isNaN(Number(currentValue)) ? count + 1 : count;
+    }
+    if (field.kind === "select") {
+      return currentValue ? count + 1 : count;
+    }
+    return count + 1;
+  }, 0);
+  const completionRatio =
+    visibleInputs.length > 0 ? completedFields / visibleInputs.length : 0;
+  const presetDescription =
+    PRESETS.find((preset) => preset.id === selectedPreset)?.description[locale] ?? "";
 
   return (
     <div className="space-y-6 sm:space-y-8">
       <section className="surface-panel relative overflow-hidden p-4 sm:p-6 lg:p-8">
-        <div className="grid gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_260px]">
-          <div className="space-y-3 sm:space-y-4">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">{calculator.category}</p>
-            <div>
-              <h1 className="text-2xl sm:text-3xl font-bold leading-tight lg:text-4xl">{calculator.title}</h1>
-              <p className="mt-2 text-xs sm:text-sm text-muted-foreground lg:text-base">{calculator.description}</p>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">{calculator.category}</p>
+            <div className="space-y-3">
+              <h1 className="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+                {calculator.title}
+              </h1>
+              <p className="text-sm text-muted-foreground lg:text-base">{calculator.description}</p>
             </div>
-            <div className="flex flex-wrap gap-2 sm:gap-3 text-xs">
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border/60 bg-muted/30 px-2.5 sm:px-3 py-1 text-muted-foreground">
-                <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary flex-shrink-0" aria-hidden />
+            <div className="flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.35em]">
+              <Badge variant="brand" className="text-[10px]">
+                <Sparkles className="mr-1 h-3 w-3" aria-hidden />
                 {dictionary.calc.liveUpdate}
-              </span>
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border/60 bg-muted/30 px-2.5 sm:px-3 py-1 text-muted-foreground">
-                <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary flex-shrink-0" aria-hidden />
-                <span className="truncate">{country.nameLocalized} · {country.unitSystem}</span>
-              </span>
+              </Badge>
+              <Badge variant="outline" className="text-[10px]">
+                <ShieldCheck className="mr-1 h-3 w-3" aria-hidden />
+                {country.nameLocalized} · {country.unitSystem}
+              </Badge>
+              <Badge variant="glow" className="text-[10px]">
+                {locale === "ru" ? "Пресет" : "Preset"} · {PRESETS.find((preset) => preset.id === selectedPreset)?.label[locale]}
+              </Badge>
             </div>
-          </div>
-          <div className="rounded-2xl border border-border/60 bg-card/70 p-3 sm:p-4">
-            <div className="flex items-center justify-end">
-              <Button variant="outline" size="sm" onClick={handleCopyLink} className="w-full sm:w-auto text-xs sm:text-sm whitespace-nowrap">
-                <CopyIcon className="mr-1.5 sm:mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
-                <span className="hidden sm:inline">{copied ? dictionary.home.copied : dictionary.home.copyLink}</span>
-                <span className="sm:hidden">{copied ? dictionary.home.copied : locale === "ru" ? "Скопировать" : "Copy"}</span>
-              </Button>
+            <div className="space-y-2">
+              <Label className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                {locale === "ru" ? "Режимы расчёта" : "Presets"}
+              </Label>
+              <div className="flex flex-wrap gap-2">
+                {PRESETS.map((preset) => (
+                  <Chip
+                    key={preset.id}
+                    selected={selectedPreset === preset.id}
+                    variant={selectedPreset === preset.id ? "soft" : "outline"}
+                    elevated={selectedPreset === preset.id}
+                    onClick={() => applyPreset(preset.id)}
+                  >
+                    {preset.label[locale]}
+                  </Chip>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground">{presetDescription}</p>
             </div>
-            <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{dictionary.calc.disclaimer}</p>
           </div>
         </div>
       </section>
@@ -362,40 +490,76 @@ export const CalculatorRunner = ({
               <p className="text-xs text-muted-foreground">{country.unitSystem.toUpperCase()}</p>
             </div>
           </div>
+          <div className="rounded-2xl border border-border/60 bg-muted/20 p-4">
+            <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground">
+              <span>{locale === "ru" ? "Прогресс заполнения" : "Completion"}</span>
+              <span>{Math.round(completionRatio * 100)}%</span>
+            </div>
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-border/40">
+              <span
+                className="block h-full rounded-full bg-primary transition-[width] duration-300"
+                style={{ width: `${Math.round(completionRatio * 100)}%` }}
+              />
+            </div>
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              {completedFields}/{visibleInputs.length || 1} {locale === "ru" ? "полей заполнено" : "fields complete"}
+            </p>
+          </div>
           <div className="space-y-3 sm:space-y-4">
             {visibleInputs.map((field) => {
               const unitLabel = unitLabelFor(country.unitSystem, field.unitKind);
               const helperCopy = helperTextFor(field, unitLabel);
               const Icon = unitKindIcons[field.unitKind ?? "default"] ?? unitKindIcons.default;
+              const currentValue = values[field.id];
+              const numericValue = Number(currentValue);
+              const hasError =
+                field.kind === "number" &&
+                (currentValue === "" || currentValue === undefined || Number.isNaN(numericValue) || numericValue < 0);
+              const errorId = `${field.id}-error`;
               return (
                 <div
                   key={field.id}
-                  className="rounded-xl sm:rounded-2xl border border-border/60 bg-background/70 p-3 sm:p-4 shadow-sm shadow-black/5"
+                  className="rounded-2xl border border-border/60 bg-background/80 p-3 sm:p-4 shadow-sm shadow-black/5"
                 >
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <span className="rounded-lg sm:rounded-xl bg-muted/50 p-1.5 sm:p-2 text-primary flex-shrink-0">
-                      <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+                  <div className="flex items-start gap-3">
+                    <span className="rounded-2xl bg-muted/40 p-2 text-primary flex-shrink-0">
+                      <Icon className="h-4 w-4" aria-hidden />
                     </span>
-                    <div className="flex-1 space-y-1.5 sm:space-y-2 min-w-0">
-                      <Label htmlFor={field.id} className="text-xs sm:text-sm font-medium">
-                        {field.label}
-                      </Label>
+                    <div className="flex-1 space-y-2 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <Label htmlFor={field.id} className="text-xs sm:text-sm font-semibold">
+                          {field.label}
+                        </Label>
+                        <Tooltip content={helperCopy}>
+                          <button
+                            type="button"
+                            className="text-muted-foreground transition hover:text-foreground"
+                            aria-label={locale === "ru" ? "Пояснение" : "Helper"}
+                          >
+                            <Info className="h-3.5 w-3.5" aria-hidden />
+                          </button>
+                        </Tooltip>
+                      </div>
                       {field.kind === "number" ? (
-                        <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl border border-border/80 bg-card px-2 sm:px-3 py-1 sm:py-1.5">
+                        <div className="flex items-center gap-2 rounded-2xl border-2 border-border/70 bg-card px-3 py-2 focus-within:border-primary/70">
                           <Input
                             id={field.id}
                             type="number"
                             inputMode="decimal"
-                            value={values[field.id] === undefined ? "" : String(values[field.id])}
+                            value={currentValue === undefined ? "" : String(currentValue)}
                             onChange={(event) => updateField(field.id, event.target.value)}
-                            className="h-9 sm:h-10 flex-1 border-0 bg-transparent text-base sm:text-sm focus-visible:ring-0 min-w-0"
+                            className="h-10 flex-1 border-0 bg-transparent text-base focus-visible:ring-0"
+                            aria-invalid={hasError}
+                            aria-describedby={hasError ? errorId : undefined}
                           />
-                          <span className="text-xs font-medium uppercase text-muted-foreground whitespace-nowrap flex-shrink-0">{unitLabel}</span>
+                          <Badge variant="outline" className="text-[11px] uppercase tracking-widest">
+                            {unitLabel}
+                          </Badge>
                         </div>
                       ) : null}
                       {field.kind === "select" ? (
                         <Select value={(values[field.id] as string) ?? ""} onValueChange={(val) => updateField(field.id, val)}>
-                          <SelectTrigger className="h-9 sm:h-10 text-sm sm:text-base">
+                          <SelectTrigger className="h-10 rounded-2xl text-sm">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
@@ -408,10 +572,14 @@ export const CalculatorRunner = ({
                         </Select>
                       ) : null}
                       {field.kind === "toggle" ? (
-                        <div className="flex items-center justify-between rounded-lg sm:rounded-xl border border-border/80 bg-card px-3 sm:px-4 py-1.5 sm:py-2">
+                        <div className="flex items-center justify-between rounded-2xl border border-border/80 bg-card px-4 py-2">
                           <span className="text-xs sm:text-sm text-muted-foreground pr-2">{helperCopy}</span>
                           <Switch checked={Boolean(values[field.id])} onCheckedChange={(checked) => updateField(field.id, checked)} />
                         </div>
+                      ) : hasError ? (
+                        <p id={errorId} className="text-xs text-destructive">
+                          {locale === "ru" ? "Введите корректное значение" : "Enter a valid value"}
+                        </p>
                       ) : (
                         <p className="text-xs text-muted-foreground leading-relaxed">{helperCopy}</p>
                       )}
@@ -421,16 +589,17 @@ export const CalculatorRunner = ({
               );
             })}
           </div>
-          <div className="rounded-xl sm:rounded-2xl border border-border/70 bg-primary/5 p-3 sm:p-4">
+          <div className="rounded-2xl border border-border/70 bg-primary/5 p-4">
             <div className="flex items-center justify-between">
               <Label className="text-xs sm:text-sm font-semibold">{dictionary.calc.waste}</Label>
               <Badge variant="outline" className="text-xs">{(waste * 100).toFixed(1)}%</Badge>
             </div>
-            <div className="mt-2 sm:mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
               <Input
                 type="number"
                 min={0}
                 max={30}
+                step={0.1}
                 value={(waste * 100).toFixed(1)}
                 onChange={(event) =>
                   startTransition(() =>
@@ -440,6 +609,19 @@ export const CalculatorRunner = ({
                 className="h-9 sm:h-10 text-base sm:text-sm"
               />
               <p className="text-xs text-muted-foreground leading-relaxed">{dictionary.calc.wasteHelp}</p>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {[0.05, 0.08, 0.12].map((presetWaste) => (
+                <Chip
+                  key={presetWaste}
+                  size="sm"
+                  variant={Math.round(waste * 100) === Math.round(presetWaste * 100) ? "soft" : "ghost"}
+                  selected={Math.round(waste * 100) === Math.round(presetWaste * 100)}
+                  onClick={() => startTransition(() => setWaste(presetWaste))}
+                >
+                  {Math.round(presetWaste * 100)}%
+                </Chip>
+              ))}
             </div>
           </div>
         </section>
@@ -463,7 +645,7 @@ export const CalculatorRunner = ({
             </Tabs>
           </div>
           {mainRow ? (
-            <div className="rounded-2xl sm:rounded-3xl border border-primary/40 bg-primary/10 p-3 sm:p-4 lg:p-5 text-primary">
+            <div className="rounded-2xl sm:rounded-3xl border border-primary/40 bg-primary/10 p-3 sm:p-4 lg:p-5 text-primary" aria-live="polite">
               <p className="text-xs uppercase tracking-widest">{dictionary.calc.mainResult}</p>
               <p className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold">
                 <AnimatedNumber value={withWasteValue} />
@@ -521,6 +703,20 @@ export const CalculatorRunner = ({
                 </div>
               </div>
             ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" size="sm" onClick={handleCopyLink}>
+              <CopyIcon className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+              {copied ? dictionary.home.copied : dictionary.home.copyLink}
+            </Button>
+            <Button variant="ghost" size="sm" onClick={handleShare}>
+              <Share2 className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+              {locale === "ru" ? "Поделиться" : "Share"}
+            </Button>
+            <Button variant="subtle" size="sm" onClick={handleDownload}>
+              <Download className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+              {locale === "ru" ? "PDF" : "PDF"}
+            </Button>
           </div>
           <div className="rounded-xl sm:rounded-2xl border border-amber-200 bg-amber-50/60 p-3 sm:p-4 text-xs sm:text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100">
             <div className="flex items-start gap-2 font-medium">

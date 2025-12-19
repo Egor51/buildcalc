@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { CheckCircle2, XCircle, Lightbulb, HelpCircle, ArrowRight } from "lucide-react";
 import type { CalculatorContent } from "@/lib/content/types";
-import type { CalculatorRecord } from "@/lib/server/calculators";
 import type { Locale } from "@/lib/config/site";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,11 +14,10 @@ import { getCalculators } from "@/lib/server/calculators";
 
 type Props = {
   content: CalculatorContent;
-  calculator: CalculatorRecord;
   locale: Locale;
 };
 
-export async function CalculatorContentSection({ content, calculator, locale }: Props) {
+export async function CalculatorContentSection({ content, locale }: Props) {
   // Get all calculators to resolve titles from slugs
   const allCalculators = await getCalculators(locale);
   const calculatorMap = new Map(allCalculators.map(calc => [calc.slug, calc]));

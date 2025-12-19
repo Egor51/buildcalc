@@ -28,11 +28,31 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        electric: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
@@ -61,6 +81,14 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        glow: "0 15px 45px rgba(255, 122, 24, 0.35)",
+        "card-xl": "0 22px 70px rgba(17, 19, 27, 0.15)",
+      },
+      backgroundImage: {
+        "orb-warm": "radial-gradient(circle at 20% 20%, rgba(255,122,24,0.25), transparent 55%)",
+        "orb-electric": "radial-gradient(circle at 80% 0%, rgba(111,91,255,0.35), transparent 45%)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -78,12 +106,33 @@ const config: Config = {
           from: { transform: "translateX(-100%)" },
           to: { transform: "translateX(0)" },
         },
+        "fade-up": {
+          from: { opacity: "0", transform: "translate3d(0, 12px, 0)" },
+          to: { opacity: "1", transform: "translate3d(0, 0, 0)" },
+        },
+        "card-pop": {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "80%": { transform: "scale(1.02)", opacity: "1" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.65" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
         "slide-in": "slide-in 0.3s ease-out",
+        "fade-up": "fade-up 0.4s ease-out",
+        "card-pop": "card-pop 0.4s ease",
+        shimmer: "shimmer 1.2s ease-in-out infinite",
+        "pulse-soft": "pulse-soft 1.5s ease-in-out infinite",
       },
     },
   },

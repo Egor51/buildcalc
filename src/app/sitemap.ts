@@ -1,6 +1,4 @@
 import type { MetadataRoute } from "next";
-import { readdir, stat } from "fs/promises";
-import { join } from "path";
 import { locales } from "@/lib/config/site";
 import { CALCULATOR_DEFINITIONS } from "@/lib/calc/definitions";
 import { getCalculatorContent } from "@/lib/content/loader";

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 
 import { CatalogExplorer } from "@/components/catalog/catalog-explorer";
 import { StructuredData } from "@/lib/seo/structured-data";
