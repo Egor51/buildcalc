@@ -388,7 +388,7 @@ export const CalculatorRunner = ({
                             inputMode="decimal"
                             value={values[field.id] === undefined ? "" : String(values[field.id])}
                             onChange={(event) => updateField(field.id, event.target.value)}
-                            className="h-9 sm:h-10 flex-1 border-0 bg-transparent text-sm sm:text-base focus-visible:ring-0 min-w-0"
+                            className="h-9 sm:h-10 flex-1 border-0 bg-transparent text-base sm:text-sm focus-visible:ring-0 min-w-0"
                           />
                           <span className="text-xs font-medium uppercase text-muted-foreground whitespace-nowrap flex-shrink-0">{unitLabel}</span>
                         </div>
@@ -437,7 +437,7 @@ export const CalculatorRunner = ({
                     setWaste(Math.max(0, Math.min(0.3, Number(event.target.value) / 100))),
                   )
                 }
-                className="h-9 sm:h-10 text-sm sm:text-base"
+                className="h-9 sm:h-10 text-base sm:text-sm"
               />
               <p className="text-xs text-muted-foreground leading-relaxed">{dictionary.calc.wasteHelp}</p>
             </div>

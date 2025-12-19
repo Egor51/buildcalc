@@ -58,8 +58,8 @@ export function MobileMenu({ locale }: Props) {
             className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity"
             onClick={() => setOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 z-50 w-[300px] sm:w-[360px] bg-card shadow-2xl border-r border-border flex flex-col">
-            <div className="flex items-center justify-between px-4 py-4 border-b border-border/60">
+          <div className="fixed inset-y-0 left-0 z-50 w-full max-w-[300px] sm:max-w-[360px] bg-card shadow-2xl border-r border-border flex flex-col transform transition-transform duration-300 ease-in-out">
+            <div className="flex items-center justify-between px-4 py-4 border-b border-border/60 flex-shrink-0">
               <p className="text-base font-semibold">
                 {locale === "ru" ? "Меню" : "Menu"}
               </p>
@@ -68,12 +68,13 @@ export function MobileMenu({ locale }: Props) {
                 size="icon"
                 onClick={() => setOpen(false)}
                 className="h-9 w-9"
+                aria-label={locale === "ru" ? "Закрыть меню" : "Close menu"}
               >
                 <X className="h-4 w-4" />
                 <span className="sr-only">Close menu</span>
               </Button>
             </div>
-            <div className="flex-1 overflow-y-auto px-4 py-6 space-y-6">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-6">
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
               {locale === "ru" ? "Навигация" : "Navigation"}

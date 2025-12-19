@@ -103,6 +103,19 @@ html {
     font-size: 16px; /* Prevent zoom on iOS */
   }
   
+  /* Prevent zoom on input focus (iOS Safari) - minimum 16px */
+  input,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+  
   /* Better touch targets */
   button,
   a,
@@ -134,6 +147,21 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/50;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Mobile menu scroll improvements */
+@media (max-width: 640px) {
+  .overscroll-contain {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .bg-grid-soft {
