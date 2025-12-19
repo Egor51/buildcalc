@@ -43,12 +43,24 @@ jobs:
 
       - name: Deploy to server
         run: |
+          DEPLOY_DIR="/opt/CalcProject/calc"
+          
+          # Создание директории и копирование docker-compose.yml
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p $DEPLOY_DIR"
+          scp -o StrictHostKeyChecking=no docker-compose.yml ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$DEPLOY_DIR/
+          
+          # Выполнение команд деплоя
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
             set -e
-            cd /opt/CalcProject/calc
+            
+            DEPLOY_DIR="/opt/CalcProject/calc"
+            cd "$DEPLOY_DIR"
             
             # Login to Docker Hub
             echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin || true
+            
+            # Создание сети, если её нет
+            docker network create one-network || true
             
             # Остановка текущего контейнера
             docker compose down || true
