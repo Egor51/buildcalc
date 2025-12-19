@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact number of wallpaper rolls needed for your walls, accounting for room perimeter, wall height, pattern repeat, waste factors (typically 10-15% for simple patterns, 15-20% for patterns with large repeats), and country-specific roll sizes. Supports both metric and imperial units with automatic conversion.",
+  "steps": [
+    {
+      "title": "Measure Room Perimeter",
+      "description": "Add up all wall lengths in the room. For rectangular rooms: Perimeter = 2 × (Length + Width). For L-shaped or irregular rooms, measure each wall segment separately and sum them. Typical residential rooms have perimeters of 12-30m (40-100ft)."
+    },
+    {
+      "title": "Enter Wall Height",
+      "description": "Measure from floor to ceiling. Standard ceiling heights are 2.4-2.7m (8-9ft). Measure at multiple points and use the average if heights vary. Add 10-15cm (4-6in) extra for trimming at top and bottom."
+    },
+    {
+      "title": "Account for Pattern Repeat",
+      "description": "Pattern repeat is the vertical distance before the pattern repeats. Small patterns (0-20cm): 10-12% waste. Medium patterns (20-50cm): 12-15% waste. Large patterns (50cm+): 15-20% waste. The calculator adjusts waste based on repeat size."
+    },
+    {
+      "title": "Select Roll Size",
+      "description": "Standard roll sizes vary by country: European (10m × 0.53m), US (8.2m × 0.53m), or custom sizes. The calculator uses country-specific defaults. Verify roll dimensions with your supplier."
+    },
+    {
+      "title": "Calculate Rolls Needed",
+      "description": "The calculator shows: total wall area, number of rolls needed (including waste and pattern matching), and estimated cost. Always round up to full rolls. Order 1-2 extra rolls for future repairs."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all wallpaper from the same batch/lot for color consistency. Buy 1-2 extra rolls for future repairs. Store rolls vertically in a dry, cool location to prevent damage."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for pattern repeat",
+      "solution": "Pattern repeat significantly affects waste. A pattern with 50cm repeat needs 15-20% waste vs 10-12% for small patterns. Always check pattern repeat on the wallpaper label and enter it accurately."
+    },
+    {
+      "mistake": "Forgetting to subtract openings",
+      "solution": "Doors and windows reduce wallpaper needs. Standard door: ~2.0 m², single window: 1.5-2.5 m². While the calculator accounts for this, verify your measurements are accurate."
+    },
+    {
+      "mistake": "Not ordering extra for pattern matching",
+      "solution": "Patterns with large repeats require extra rolls for matching. Always order 1-2 extra rolls beyond calculated needs, especially for patterns with repeats >30cm."
+    },
+    {
+      "mistake": "Using wrong roll size",
+      "solution": "Roll sizes vary by country and manufacturer. European rolls are typically 10m × 0.53m, US rolls 8.2m × 0.53m. Verify with your supplier and adjust the calculator if needed."
+    }
+  ],
+  "proTips": [
+    "Buy all wallpaper from the same batch/lot. Color variations between batches are noticeable, especially with textured or metallic wallpapers.",
+    "For patterns with large repeats (>50cm), add 20% waste instead of 15%. Large repeats create more offcuts that can't be reused.",
+    "Calculate paste separately: typically 0.5-1kg per roll depending on wallpaper type (vinyl, paper, fabric). Heavy wallpapers require more paste.",
+    "Plan your layout before starting. Decide where to start (usually near a door or window) and how to handle pattern matching at corners.",
+    "Keep 1-2 extra rolls for future repairs. Wallpaper manufacturers discontinue patterns, and you'll need matching rolls for damage or expansion.",
+    "Store rolls vertically in a dry, cool location. Horizontal storage or exposure to moisture can damage wallpaper and affect adhesion."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Small patterns (0-20cm repeat): 10-12% waste. Medium patterns (20-50cm): 12-15% waste. Large patterns (50cm+): 15-20% waste. Always add 1-2 extra rolls for future repairs and pattern matching."
+    },
+    {
+      "question": "What is pattern repeat and why does it matter?",
+      "answer": "Pattern repeat is the vertical distance before the pattern repeats. Larger repeats require more waste because you need to match patterns between strips, creating more offcuts. Always check the repeat on the wallpaper label."
+    },
+    {
+      "question": "Do I need to calculate paste separately?",
+      "answer": "Yes, calculate paste separately. Standard usage: 0.5-1kg per roll depending on wallpaper type. Vinyl and heavy wallpapers require more paste. Always buy 10-20% extra paste."
+    },
+    {
+      "question": "Should I order extra rolls?",
+      "answer": "Yes, order 1-2 extra rolls from the same batch/lot. Wallpaper colors and patterns vary between batches, and you'll need matching rolls for future repairs or damage. Manufacturers discontinue patterns regularly."
+    },
+    {
+      "question": "How do I account for doors and windows?",
+      "answer": "The calculator subtracts openings automatically, but verify your measurements. Standard door: ~2.0 m², single window: 1.5-2.5 m². For multiple openings, sum their areas and ensure they're subtracted from total wall area."
+    },
+    {
+      "question": "What about different roll sizes?",
+      "answer": "Roll sizes vary: European (10m × 0.53m), US (8.2m × 0.53m), or custom sizes. The calculator uses country-specific defaults. Verify roll dimensions with your supplier and adjust if needed."
+    },
+    {
+      "question": "Can I use this for textured or fabric wallpapers?",
+      "answer": "Yes, but textured or fabric wallpapers may have different pattern repeats and require more paste. Verify pattern repeat on the label and adjust waste factor if the repeat is larger than standard."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum totals. This helps identify waste factors per room and ensures accurate accounting for different room sizes, ceiling heights, and pattern requirements."
+    }
+  ],
+  "relatedCalculators": ["paint", "drywall", "plaster", "tile"],
+  "lastUpdated": "2025-12-18"
+}

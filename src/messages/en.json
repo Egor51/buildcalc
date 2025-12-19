@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "tagline": "Global construction calculators for smarter builds",
+    "home": "Catalog",
+    "guide": "Guides",
+    "cta": "Request a calculator"
+  },
+  "filters": {
+    "title": "Filters",
+    "search": "Search by name",
+    "category": "Category",
+    "unitSystem": "Unit system",
+    "unitMetric": "Metric",
+    "unitImperial": "Imperial",
+    "country": "Country",
+    "clear": "Clear filters"
+  },
+  "home": {
+    "heroTitle": "BuildCalc — accurate material takeoffs in any country",
+    "heroSubtitle": "Compare calculators, switch units instantly, and keep waste factors aligned with your local building codes.",
+    "heroCtaPrimary": "Browse calculators",
+    "heroCtaSecondary": "See popular tools",
+    "heroStatProjects": "planners trust BuildCalc",
+    "heroStatCountries": "country defaults baked in",
+    "heroStatCoverage": "unit presets ready",
+    "ratingLabel": "Rating",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
+    "wasteFactor": "Waste factor",
+    "wasteHint": "Defaulted by country standards",
+    "copyLink": "Copy link with parameters",
+    "copied": "Link copied",
+    "results": "Results",
+    "siUnits": "SI units",
+    "userUnits": "Your units",
+    "inputs": "Inputs",
+    "unitToggle": "Show in base SI units",
+    "countryDefaults": "Country defaults",
+    "manualOverride": "Pick another country to override defaults.",
+    "guideLink": "Read the installation guide",
+    "openCalculator": "Open calculator",
+    "cardCta": "Open calculator →",
+    "mostPopular": "Most popular",
+    "emptyState": "No calculators match your filters.",
+    "reset": "Reset filters",
+    "sections": {
+      "structural": {
+        "title": "Structural & shell",
+        "description": "Concrete, roofing, masonry, and substrate prep tools."
+      },
+      "finishing": {
+        "title": "Finishing layers",
+        "description": "Painting, tiling, plaster, wallpaper, and coatings."
+      },
+      "interior": {
+        "title": "Interior fit-out",
+        "description": "Flooring, drywall, insulation, and electrical planning."
+      }
+    }
+  },
+  "calc": {
+    "waste": "Waste factor",
+    "faqTitle": "Frequently asked questions",
+    "howTitle": "How it works",
+    "inputsTitle": "Project inputs",
+    "resultsTitle": "Results",
+    "resultsPanel": "Material output",
+    "contextTitle": "Context & guidance",
+    "siTab": "Base SI",
+    "userTab": "My units",
+    "wasteHelp": "Includes breakage, spillage, onsite adjustments",
+    "guideTitle": "Installation guide",
+    "mainResult": "Primary output",
+    "withWaste": "With waste applied",
+    "packaging": "Estimated packaging",
+    "helperDefault": "Enter a value in {unit}.",
+    "liveUpdate": "Updates instantly as you type.",
+    "disclaimer": "Results are approximate. Verify with manufacturer specifications or consult a professional.",
+    "packsNeeded": "You need {amount} {unit}, approximately {packs} {packUnit}",
+    "modePreset": "Mode",
+    "modeRoom": "Room",
+    "modeWall": "Wall",
+    "modeCustom": "Custom"
+  },
+  "guide": {
+    "updated": "Last updated",
+    "back": "Back to calculator"
+  }
+}
+

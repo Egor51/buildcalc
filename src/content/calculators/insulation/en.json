@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact amount of insulation material needed for walls, ceilings, floors, or roofs. Accounts for surface area, insulation thickness, material type (fiberglass, mineral wool, foam board, spray foam), waste factors (typically 5-10% for standard installations, 10-15% for complex shapes), and country-specific R-value requirements. Supports both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Surface Area",
+      "description": "For walls: measure length × height, subtract openings. For ceilings: measure length × width. For floors: measure length × width. Use the same unit system throughout. Record all measurements consistently."
+    },
+    {
+      "title": "Select Insulation Type",
+      "description": "Choose material: fiberglass batts (typically 0.6m × various lengths), mineral wool (similar), foam board (various sizes), or spray foam (calculated by volume). Each type has different coverage and R-value per thickness."
+    },
+    {
+      "title": "Determine Required Thickness",
+      "description": "Thickness depends on R-value requirements and material type. Typical residential: 100-150mm (4-6in) for walls, 200-300mm (8-12in) for attics. Check local building codes for minimum R-values. Thicker insulation = better energy efficiency."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Standard rectangular areas need 5-10% waste for cuts around obstacles. Complex shapes (irregular walls, around pipes/ducts) need 10-15% waste. The calculator applies country-specific defaults but you can adjust."
+    },
+    {
+      "title": "Calculate Material Needed",
+      "description": "The calculator shows: total area, insulation volume/area needed (including waste), and number of batts/rolls/boards required. Always round up to full packages. Order 5-10% extra for future repairs."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all insulation from the same batch for consistency. Buy 5-10% extra for future repairs. Store in a dry location to prevent moisture damage. Calculate vapor barrier separately if required."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for required R-value",
+      "solution": "Building codes specify minimum R-values for different areas (walls, ceilings, floors). Thicker insulation = higher R-value. Always verify local requirements and ensure your insulation thickness meets or exceeds minimum R-values."
+    },
+    {
+      "mistake": "Forgetting to subtract openings",
+      "solution": "Doors, windows, and other openings reduce insulation needs. Standard door: ~2.0 m², single window: 1.5-2.5 m². Always measure and subtract all openings accurately."
+    },
+    {
+      "mistake": "Underestimating waste for complex shapes",
+      "solution": "Complex shapes (around pipes, ducts, irregular walls) require 10-15% waste vs 5-10% for standard rectangular areas. Always add extra for cuts around obstacles and irregular surfaces."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 5-10% extra. Insulation gets damaged during construction or renovations, and you'll need matching material for repairs. Different batches may have slight variations."
+    }
+  ],
+  "proTips": [
+    "Buy all insulation from the same batch. Different batches can have slight density or thickness variations that affect R-value and fit.",
+    "For attics, account for joist spacing. Standard spacing is 400mm (16in) or 600mm (24in). Ensure batt width matches joist spacing to minimize waste.",
+    "Calculate vapor barrier separately if required. Vapor barrier area typically equals insulation area. Some insulation comes with integrated vapor barrier.",
+    "For spray foam, calculate by volume (not area). Coverage depends on thickness and expansion rate. Consult manufacturer specifications for exact coverage.",
+    "Plan your installation to minimize gaps. Gaps reduce effectiveness significantly. Cut batts carefully to fit snugly around obstacles without compressing.",
+    "Keep 5-10% extra insulation for future repairs. Store in a dry location to prevent moisture damage, which reduces R-value."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Standard rectangular areas: 5-10% waste. Complex shapes (irregular walls, around pipes/ducts): 10-15% waste. Always add 5-10% extra beyond calculated needs for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "What is R-value and why does it matter?",
+      "answer": "R-value measures insulation's resistance to heat flow. Higher R-value = better insulation. Building codes specify minimum R-values for different areas. Thicker insulation or higher-density materials provide higher R-values."
+    },
+    {
+      "question": "Do I need to calculate vapor barrier separately?",
+      "answer": "Yes, if required. Vapor barrier area typically equals insulation area. Some insulation comes with integrated vapor barrier. Check local building codes and manufacturer specifications to determine if vapor barrier is needed."
+    },
+    {
+      "question": "Should I order extra insulation?",
+      "answer": "Yes, order 5-10% extra from the same batch. Insulation gets damaged during construction, and you'll need matching material for repairs. Different batches may have slight density or thickness variations."
+    },
+    {
+      "question": "How do I account for different insulation types?",
+      "answer": "Each type has different coverage: fiberglass batts (standard sizes), mineral wool (similar), foam board (various sizes), spray foam (by volume). The calculator accounts for material-specific coverage. Verify with manufacturer specifications."
+    },
+    {
+      "question": "What about joist spacing for attics?",
+      "answer": "Standard joist spacing is 400mm (16in) or 600mm (24in). Ensure batt width matches joist spacing to minimize waste. For non-standard spacing, you may need to cut batts, increasing waste to 10-15%."
+    },
+    {
+      "question": "How do I calculate for multiple areas?",
+      "answer": "Calculate each area separately (walls, ceilings, floors), then sum totals. This helps identify waste factors per area and ensures accurate accounting for different R-value requirements and thicknesses."
+    },
+    {
+      "question": "What's the difference between faced and unfaced insulation?",
+      "answer": "Faced insulation has a vapor barrier attached. Unfaced doesn't. Calculation method is identical, but faced insulation may be slightly thicker due to the facing material. Both use the same area calculation."
+    }
+  ],
+  "relatedCalculators": ["roofing", "drywall", "electrical", "screed"],
+  "lastUpdated": "2025-12-18"
+}

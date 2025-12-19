@@ -1,0 +1,91 @@
+{
+  "intro": "Estimate electrical materials needed for residential or commercial wiring projects. Accounts for room dimensions, number of circuits, outlet and switch requirements, wire gauge, conduit needs, and country-specific electrical codes. This calculator provides material estimates for planning purposes. Always consult a licensed electrician for actual installation.",
+  "steps": [
+    {
+      "title": "Measure Room Dimensions",
+      "description": "Measure room length, width, and height. For multiple rooms, measure each separately. Standard residential rooms are 3-5m (10-16ft) wide, 4-6m (13-20ft) long, and 2.4-2.7m (8-9ft) high. Record all measurements consistently."
+    },
+    {
+      "title": "Determine Circuit Requirements",
+      "description": "Standard residential: 1 circuit per 20 m² (215 ft²) for general lighting/outlets. Kitchens and bathrooms typically need dedicated circuits. Count number of circuits needed based on room size and usage."
+    },
+    {
+      "title": "Calculate Outlet and Switch Count",
+      "description": "Building codes specify minimum outlets: typically 1 outlet per 3-4m (10-12ft) of wall. Count outlets and switches needed. Standard room: 4-8 outlets, 2-4 switches. Kitchens and bathrooms need more."
+    },
+    {
+      "title": "Estimate Wire Length",
+      "description": "Wire length depends on circuit routing, outlet locations, and panel distance. Rough estimate: 1.5-2× room perimeter for basic circuits. Add 20-30% for complex routing, multiple floors, or long panel distances."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Electrical work typically needs 10-15% waste for cuts, routing variations, and code compliance adjustments. Complex layouts or multi-story buildings may need 15-20% waste."
+    },
+    {
+      "title": "Calculate Materials",
+      "description": "The calculator estimates: wire length (by gauge), number of outlets/switches, junction boxes, conduit (if required), and circuit breakers. Always round up to standard package sizes. Order 10-15% extra for future repairs."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for local electrical codes",
+      "solution": "Electrical codes vary by country and region. Minimum outlet spacing, wire gauge requirements, and circuit capacity differ. Always verify local codes before calculating. This calculator provides estimates only—consult a licensed electrician."
+    },
+    {
+      "mistake": "Underestimating wire length",
+      "solution": "Wire routing is rarely straight. Account for vertical runs (to ceiling/attic), horizontal runs (around obstacles), and code-required routing paths. Add 20-30% to straight-line estimates for realistic totals."
+    },
+    {
+      "mistake": "Forgetting junction boxes and conduit",
+      "solution": "Junction boxes are required at every connection point. Conduit may be required by code in some regions or for exposed wiring. Calculate these separately based on routing and code requirements."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 10-15% extra wire and materials. Electrical work often needs adjustments during installation, and you'll need matching materials for future repairs or expansions."
+    }
+  ],
+  "proTips": [
+    "Always consult a licensed electrician for actual installation. This calculator provides planning estimates only. Electrical work must comply with local codes and safety standards.",
+    "Verify local electrical codes before calculating. Minimum outlet spacing, wire gauge requirements, and circuit capacity vary by country and region.",
+    "Plan circuit routing before calculating. Straight runs use less wire than complex routing around obstacles. Consider vertical runs (to ceiling/attic) and horizontal runs separately.",
+    "Calculate junction boxes separately: typically 1 per outlet/switch, plus additional boxes for splices and code-required access points.",
+    "For conduit, calculate based on routing length plus 10% for fittings and bends. Conduit size depends on wire gauge and number of conductors.",
+    "Keep 10-15% extra materials for future repairs and code compliance adjustments. Store in a dry location to prevent damage."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Standard electrical work: 10-15% waste. Complex layouts or multi-story buildings: 15-20% waste. Always add 10-15% extra beyond calculated needs for future repairs and code compliance adjustments."
+    },
+    {
+      "question": "Do I need to follow local electrical codes?",
+      "answer": "Yes, electrical work must comply with local codes. Codes specify minimum outlet spacing, wire gauge requirements, circuit capacity, and safety standards. This calculator provides estimates only—always consult a licensed electrician for actual installation."
+    },
+    {
+      "question": "How do I calculate wire length?",
+      "answer": "Wire length depends on circuit routing, outlet locations, and panel distance. Rough estimate: 1.5-2× room perimeter for basic circuits. Add 20-30% for complex routing, multiple floors, or long panel distances. Account for vertical and horizontal runs separately."
+    },
+    {
+      "question": "Should I order extra materials?",
+      "answer": "Yes, order 10-15% extra wire and materials. Electrical work often needs adjustments during installation, and you'll need matching materials for future repairs, expansions, or code compliance."
+    },
+    {
+      "question": "What about junction boxes and conduit?",
+      "answer": "Junction boxes: typically 1 per outlet/switch, plus additional for splices. Conduit: calculate based on routing length plus 10% for fittings. Conduit may be required by code in some regions. Verify local requirements."
+    },
+    {
+      "question": "How do I account for different wire gauges?",
+      "answer": "Wire gauge depends on circuit capacity and code requirements. Standard residential: 14 AWG (1.5mm²) for 15A circuits, 12 AWG (2.5mm²) for 20A circuits. Calculate each gauge separately based on circuit requirements."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum totals. This helps identify circuit requirements per room and ensures accurate accounting for different room sizes, usage patterns, and code requirements."
+    },
+    {
+      "question": "Can I use this for commercial projects?",
+      "answer": "This calculator provides basic estimates. Commercial projects have different requirements (higher capacity circuits, three-phase power, specialized equipment). Always consult a licensed electrician and electrical engineer for commercial work."
+    }
+  ],
+  "relatedCalculators": ["drywall", "insulation", "roofing", "flooring"],
+  "lastUpdated": "2025-12-18"
+}

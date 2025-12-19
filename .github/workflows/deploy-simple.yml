@@ -1,0 +1,76 @@
+name: Simple Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'calc/**'
+  workflow_dispatch:
+
+env:
+  DOCKER_IMAGE: buildcalc
+  DOCKER_TAG: latest
+
+jobs:
+  build-push-deploy:
+    name: Build, Push and Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./calc
+          file: ./calc/Dockerfile
+          push: true
+          tags: egor051/buildcalc:latest
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'ENDSSH'
+            set -e
+            cd /opt/CalcProject/calc
+            
+            # Login to Docker Hub
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin || true
+            
+            # Остановка текущего контейнера
+            docker compose down || true
+            
+            # Получение нового образа
+            docker pull egor051/buildcalc:latest
+            
+            # Запуск нового контейнера
+            docker compose up -d
+            
+            # Очистка неиспользуемых образов
+            docker image prune -f
+            
+            # Проверка статуса
+            docker compose ps
+            
+            echo "✅ Deployment completed!"
+          ENDSSH
+

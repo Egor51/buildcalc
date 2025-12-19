@@ -1,0 +1,1272 @@
+import { type CalculatorDefinition } from "@/lib/calc/types";
+
+export const CALCULATOR_DEFINITIONS: CalculatorDefinition[] = [
+  {
+    slug: "concrete",
+    category: "concrete",
+    rating: 5,
+    formulaKey: "concrete",
+    wasteKey: "concrete",
+    title: {
+      en: "Concrete volume",
+      ru: "Бетон",
+    },
+    description: {
+      en: "Estimate ready-mix volumes for slabs or cylinders with waste.",
+      ru: "Расчёт объёма бетона для плит и колонн с учётом запаса.",
+    },
+    howItWorks: {
+      en: "We compute geometry in meters to obtain cubic meters (m³) and convert to cubic yards for imperial projects.",
+      ru: "Расчёт выполняется в метрах, получаем кубические метры и переводим в ярды для дюймовой системы.",
+    },
+    resultLabels: [
+      {
+        id: "volume",
+        label: { en: "Concrete volume", ru: "Объём бетона" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+    ],
+    inputs: [
+      {
+        id: "mode",
+        kind: "select",
+        label: { en: "Shape", ru: "Форма" },
+        options: [
+          { value: "slab", label: { en: "Slab", ru: "Плита" } },
+          { value: "cylinder", label: { en: "Cylinder", ru: "Колонна" } },
+        ],
+        defaultMetric: "slab",
+        defaultImperial: "slab",
+      },
+      {
+        id: "length",
+        kind: "number",
+        label: { en: "Length", ru: "Длина" },
+        unitKind: "length",
+        min: 0.5,
+        max: 200,
+        step: 0.1,
+        defaultMetric: 8,
+        defaultImperial: 24,
+        group: "slab",
+      },
+      {
+        id: "width",
+        kind: "number",
+        label: { en: "Width", ru: "Ширина" },
+        unitKind: "width",
+        min: 0.5,
+        max: 200,
+        step: 0.1,
+        defaultMetric: 6,
+        defaultImperial: 18,
+        group: "slab",
+      },
+      {
+        id: "thickness",
+        kind: "number",
+        label: { en: "Thickness", ru: "Толщина" },
+        unitKind: "thickness",
+        min: 0.05,
+        max: 1,
+        step: 0.01,
+        defaultMetric: 0.15,
+        defaultImperial: 0.5,
+        group: "slab",
+      },
+      {
+        id: "diameter",
+        kind: "number",
+        label: { en: "Diameter", ru: "Диаметр" },
+        unitKind: "diameter",
+        min: 0.15,
+        max: 4,
+        step: 0.01,
+        defaultMetric: 0.4,
+        defaultImperial: 1.2,
+        group: "cylinder",
+      },
+      {
+        id: "height",
+        kind: "number",
+        label: { en: "Height", ru: "Высота" },
+        unitKind: "height",
+        min: 0.5,
+        max: 12,
+        step: 0.05,
+        defaultMetric: 3,
+        defaultImperial: 9,
+        group: "cylinder",
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Does the volume include reinforcement?",
+          ru: "Учтена ли арматура?",
+        },
+        answer: {
+          en: "Rebar weight is not deducted because steel displacement is negligible at typical reinforcement ratios.",
+          ru: "Вес арматуры не вычитается, так как объём вытеснения минимален при стандартной армировке.",
+        },
+      },
+      {
+        question: {
+          en: "Why is there a waste factor?",
+          ru: "Зачем учитывать запас?",
+        },
+        answer: {
+          en: "Countries specify minimum overage to cover pumping losses and finishing cuts. Adjust it per job.",
+          ru: "Нормы требуют минимальный запас на потери при перекачке и резке. Корректируйте его под объект.",
+        },
+      },
+    ],
+    guide: {
+      intro: {
+        en: "Pouring a slab requires prep, compaction, and curing.",
+        ru: "Для заливки плиты нужна подготовка, уплотнение и выдержка.",
+      },
+      sections: [
+        {
+          type: "paragraph",
+          body:
+            "Set forms, compact the subgrade, place reinforcement, and pour continuously to avoid cold joints.",
+        },
+        {
+          type: "list",
+          items: [
+            "Vibrate or rod the mix to eliminate voids.",
+            "Bull float immediately to bring paste to the surface.",
+            "Begin curing within 30 minutes to control cracking.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    slug: "paint",
+    category: "paint",
+    rating: 5,
+    formulaKey: "paint",
+    wasteKey: "paint",
+    title: {
+      en: "Paint coverage",
+      ru: "Покраска стен",
+    },
+    description: {
+      en: "Calculate wall area minus openings with coats and country coverage defaults.",
+      ru: "Рассчитывает площадь стен без проёмов с учётом слоёв и норм покрытия.",
+    },
+    howItWorks: {
+      en: "Wall perimeter × height gives gross area. Openings are subtracted, multiplied by coats, then divided by coverage (m²/L).",
+      ru: "Периметр × высота — это площадь. Из неё вычитаются проёмы, после чего результат делится на покрытие (м²/л).",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Paintable area", ru: "Площадь окраски" },
+        siUnit: "m²",
+      },
+      {
+        id: "volume",
+        label: { en: "Paint volume", ru: "Объём краски" },
+        siUnit: "L",
+        metricUnit: "L",
+        imperialUnit: "gal",
+      },
+    ],
+    inputs: [
+      {
+        id: "perimeter",
+        kind: "number",
+        label: { en: "Perimeter", ru: "Периметр" },
+        unitKind: "length",
+        min: 4,
+        max: 200,
+        defaultMetric: 28,
+        defaultImperial: 90,
+      },
+      {
+        id: "height",
+        kind: "number",
+        label: { en: "Wall height", ru: "Высота стен" },
+        unitKind: "height",
+        min: 2,
+        max: 6,
+        step: 0.1,
+        defaultMetric: 2.7,
+        defaultImperial: 9,
+      },
+      {
+        id: "openings",
+        kind: "number",
+        label: { en: "Openings area", ru: "Площадь проёмов" },
+        unitKind: "area",
+        min: 0,
+        max: 40,
+        defaultMetric: 4,
+        defaultImperial: 12,
+      },
+      {
+        id: "coats",
+        kind: "number",
+        label: { en: "Number of coats", ru: "Количество слоёв" },
+        unitKind: "count",
+        min: 1,
+        max: 4,
+        step: 1,
+        defaultMetric: 2,
+        defaultImperial: 2,
+      },
+      {
+        id: "coverage",
+        kind: "number",
+        label: {
+          en: "Coverage (m²/L)",
+          ru: "Покрытие (м²/л)",
+        },
+        unitKind: "coverage",
+        min: 6,
+        max: 14,
+        step: 0.1,
+        defaultMetric: 10,
+        defaultImperial: 9.5,
+      },
+    ],
+    faq: [
+      {
+        question: { en: "Are ceilings included?", ru: "Учтены ли потолки?" },
+        answer: {
+          en: "Ceilings vary per project. Add ceiling area to the perimeter input if needed.",
+          ru: "Потолки отличаются по задаче. При необходимости добавьте их площадь к периметру.",
+        },
+      },
+      {
+        question: {
+          en: "What about primer?",
+          ru: "Что с грунтовкой?",
+        },
+        answer: {
+          en: "Primer is excluded because coverage differs widely. Duplicate the calculation with primer data if required.",
+          ru: "Грунтовка исключена, так как покрытие зависит от типа. Выполните отдельный расчёт при необходимости.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "flooring",
+    category: "flooring",
+    rating: 4,
+    formulaKey: "flooring",
+    wasteKey: "flooring",
+    title: {
+      en: "Flooring & planks",
+      ru: "Напольные покрытия",
+    },
+    description: {
+      en: "Find total area and required packs for laminate, vinyl, or hardwood.",
+      ru: "Считает площадь пола и количество пачек ламината, винила или паркета.",
+    },
+    howItWorks: {
+      en: "Room area (L×W) plus waste is divided by pack coverage from local suppliers.",
+      ru: "Площадь помещения (Д×Ш) с запасом делится на площадь покрытия одной упаковки.",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Floor area", ru: "Площадь пола" },
+        siUnit: "m²",
+      },
+      {
+        id: "packs",
+        label: { en: "Packs", ru: "Пачки" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "length",
+        kind: "number",
+        label: { en: "Room length", ru: "Длина комнаты" },
+        unitKind: "length",
+        min: 1,
+        max: 50,
+        defaultMetric: 6,
+        defaultImperial: 20,
+      },
+      {
+        id: "width",
+        kind: "number",
+        label: { en: "Room width", ru: "Ширина комнаты" },
+        unitKind: "width",
+        min: 1,
+        max: 50,
+        defaultMetric: 4,
+        defaultImperial: 14,
+      },
+      {
+        id: "packCoverage",
+        kind: "number",
+        label: { en: "Pack coverage (m²)", ru: "Покрытие пачки (м²)" },
+        unitKind: "area",
+        min: 1.5,
+        max: 4,
+        step: 0.01,
+        defaultMetric: 2.25,
+        defaultImperial: 2.1,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Should I deduct kitchen islands?",
+          ru: "Важно ли вычитать острова?",
+        },
+        answer: {
+          en: "Large fixed objects can be excluded from area, but cabinets installed after flooring typically stay included.",
+          ru: "Габаритные стационарные объекты можно вычесть, но кухонные базы, ставящиеся поверх покрытия, обычно остаются в площади.",
+        },
+      },
+      {
+        question: {
+          en: "What about pattern layouts?",
+          ru: "А если узор?",
+        },
+        answer: {
+          en: "Herringbone or chevron layouts add 5–8% waste. Adjust the waste factor through country defaults or by overriding packs.",
+          ru: "Для ёлочки и других узоров добавьте 5–8% запаса, скорректировав коэффициент или площадь покрываемой пачкой.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "tile",
+    category: "tile",
+    rating: 4,
+    formulaKey: "tile",
+    wasteKey: "tile",
+    title: {
+      en: "Tile planning",
+      ru: "Плитка",
+    },
+    description: {
+      en: "Calculate tile quantities with optional diagonal layout waste.",
+      ru: "Расчитывает количество плитки и повышенный запас при диагональной укладке.",
+    },
+    howItWorks: {
+      en: "Surface area plus waste divided by single tile area yields tile count. Diagonal flag boosts waste.",
+      ru: "Площадь поверхности с запасом делится на площадь одной плитки. Для диагонали запас увеличен.",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Tiling area", ru: "Площадь облицовки" },
+        siUnit: "m²",
+      },
+      {
+        id: "tiles",
+        label: { en: "Tiles", ru: "Плитки" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "length",
+        kind: "number",
+        label: { en: "Surface length", ru: "Длина поверхности" },
+        unitKind: "length",
+        min: 1,
+        max: 30,
+        defaultMetric: 5,
+        defaultImperial: 16,
+      },
+      {
+        id: "width",
+        kind: "number",
+        label: { en: "Surface width", ru: "Ширина поверхности" },
+        unitKind: "width",
+        min: 1,
+        max: 30,
+        defaultMetric: 3,
+        defaultImperial: 10,
+      },
+      {
+        id: "tileLength",
+        kind: "number",
+        label: { en: "Tile length", ru: "Длина плитки" },
+        unitKind: "length",
+        min: 0.1,
+        max: 1,
+        step: 0.01,
+        defaultMetric: 0.6,
+        defaultImperial: 0.6,
+      },
+      {
+        id: "tileWidth",
+        kind: "number",
+        label: { en: "Tile width", ru: "Ширина плитки" },
+        unitKind: "width",
+        min: 0.1,
+        max: 1,
+        step: 0.01,
+        defaultMetric: 0.3,
+        defaultImperial: 0.3,
+      },
+      {
+        id: "diagonal",
+        kind: "toggle",
+        label: { en: "Diagonal pattern", ru: "Диагональная укладка" },
+        defaultMetric: false,
+        defaultImperial: false,
+      },
+    ],
+    faq: [
+      {
+        question: { en: "Does grout width matter?", ru: "Важно ли учитывать швы?" },
+        answer: {
+          en: "Standard 3–5 mm grout barely impacts material takeoff. Adjust tile size if you are ordering custom large joints.",
+          ru: "Стандартный шов 3–5 мм почти не влияет на расход. Для крупных швов измените размеры плитки.",
+        },
+      },
+      {
+        question: {
+          en: "Can I mix tile sizes?",
+          ru: "Можно ли учитывать несколько размеров?",
+        },
+        answer: {
+          en: "For modular patterns run separate calculations per tile group and sum the totals.",
+          ru: "Для модульных схем выполните расчёт по каждому размеру и сложите результаты.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "roofing",
+    category: "roofing",
+    rating: 4,
+    formulaKey: "roofing",
+    wasteKey: "roofing",
+    title: {
+      en: "Roof bundles",
+      ru: "Кровля",
+    },
+    description: {
+      en: "Slope-adjusted roof area and bundle counts with ventilation waste.",
+      ru: "Площадь скатов с учётом уклона и расчёт пачек гонта.",
+    },
+    howItWorks: {
+      en: "Projected area divided by cos(angle) equals slope area. Waste + bundle coverage map to bundle count.",
+      ru: "Проекция (Д×Ш) делится на cos(угла) — получаем площадь ската. Далее применяем запас и делим на покрытие пачки.",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Slope area", ru: "Площадь ската" },
+        siUnit: "m²",
+      },
+      {
+        id: "bundles",
+        label: { en: "Bundles", ru: "Пачки" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "length",
+        kind: "number",
+        label: { en: "Roof length", ru: "Длина кровли" },
+        unitKind: "length",
+        min: 2,
+        max: 80,
+        defaultMetric: 12,
+        defaultImperial: 40,
+      },
+      {
+        id: "width",
+        kind: "number",
+        label: { en: "Roof width", ru: "Ширина кровли" },
+        unitKind: "width",
+        min: 2,
+        max: 40,
+        defaultMetric: 8,
+        defaultImperial: 26,
+      },
+      {
+        id: "angle",
+        kind: "number",
+        label: { en: "Slope angle (°)", ru: "Угол ската (°)" },
+        unitKind: "angle",
+        min: 5,
+        max: 55,
+        step: 1,
+        defaultMetric: 28,
+        defaultImperial: 26,
+      },
+      {
+        id: "bundleCoverage",
+        kind: "number",
+        label: { en: "Bundle coverage (m²)", ru: "Покрытие пачки (м²)" },
+        unitKind: "area",
+        min: 2.5,
+        max: 4,
+        step: 0.01,
+        defaultMetric: 3.1,
+        defaultImperial: 3.0,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Do hips and valleys change the result?",
+          ru: "Влияют ли вальмы?",
+        },
+        answer: {
+          en: "Complex roofs create more cuts, so increase waste for multiple hips/valleys.",
+          ru: "Сложные скаты дают больше реза, поэтому повышайте коэффициент запаса.",
+        },
+      },
+      {
+        question: {
+          en: "What about ridge caps?",
+          ru: "Как учесть коньковые элементы?",
+        },
+        answer: {
+          en: "Ridge caps typically consume one extra bundle per 9 linear meters. Add them manually if required.",
+          ru: "Коньковые элементы обычно требуют отдельную пачку на каждые 9 метров. Добавьте её вручную.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "drywall",
+    category: "drywall",
+    rating: 3,
+    formulaKey: "drywall",
+    wasteKey: "drywall",
+    title: {
+      en: "Drywall sheets",
+      ru: "Гипсокартон",
+    },
+    description: {
+      en: "Wall area plus waste divided by preferred sheet size.",
+      ru: "Площадь стен с запасом делится на стандартный лист.",
+    },
+    howItWorks: {
+      en: "Perimeter × height minus openings yields wall area. Sheet size from country defaults handles board formats.",
+      ru: "Периметр × высота минус проёмы = площадь. Размер листа берётся из профиля страны.",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Wall area", ru: "Площадь стен" },
+        siUnit: "m²",
+      },
+      {
+        id: "sheets",
+        label: { en: "Sheets", ru: "Листы" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "perimeter",
+        kind: "number",
+        label: { en: "Perimeter", ru: "Периметр" },
+        unitKind: "length",
+        min: 4,
+        max: 200,
+        defaultMetric: 32,
+        defaultImperial: 110,
+      },
+      {
+        id: "height",
+        kind: "number",
+        label: { en: "Wall height", ru: "Высота стен" },
+        unitKind: "height",
+        min: 2.2,
+        max: 6,
+        step: 0.1,
+        defaultMetric: 2.8,
+        defaultImperial: 9.5,
+      },
+      {
+        id: "openings",
+        kind: "number",
+        label: { en: "Openings area", ru: "Проёмы" },
+        unitKind: "area",
+        min: 0,
+        max: 35,
+        defaultMetric: 5,
+        defaultImperial: 18,
+      },
+      {
+        id: "sheetArea",
+        kind: "number",
+        label: { en: "Sheet area (m²)", ru: "Площадь листа (м²)" },
+        unitKind: "area",
+        min: 2.5,
+        max: 4,
+        defaultMetric: 2.88,
+        defaultImperial: 2.97,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Horizontal vs vertical?",
+          ru: "Горизонтально или вертикально?",
+        },
+        answer: {
+          en: "This calculator assumes standard vertical installation. For horizontal seams, adjust the waste to 15%.",
+          ru: "Предполагается вертикальный монтаж. Для горизонтального увеличьте запас до 15%.",
+        },
+      },
+      {
+        question: {
+          en: "Does it cover ceilings?",
+          ru: "Потолки учитываются?",
+        },
+        answer: {
+          en: "Ceilings can be added by entering their perimeter/height separately and summing the sheet counts.",
+          ru: "Потолки добавляются отдельным расчётом по периметру/ширине и сложением листов.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "wallpaper",
+    category: "wallpaper",
+    rating: 3,
+    formulaKey: "wallpaper",
+    wasteKey: "wallpaper",
+    title: {
+      en: "Wallpaper rolls",
+      ru: "Обои",
+    },
+    description: {
+      en: "Strips per roll and total rolls with pattern allowance.",
+      ru: "Сколько полос в рулоне и сколько рулонов нужно, с учётом припуска на рисунок.",
+    },
+    howItWorks: {
+      en: "Roll length divided by wall height + allowance gives strips per roll. Perimeter / roll width yields needed strips.",
+      ru: "Длина рулона делится на высоту стены + припуск — получаем полосы. Периметр / ширина полосы даёт общее количество.",
+    },
+    resultLabels: [
+      {
+        id: "strips",
+        label: { en: "Strips needed", ru: "Полосы" },
+        siUnit: "ea",
+      },
+      {
+        id: "rolls",
+        label: { en: "Rolls", ru: "Рулоны" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "perimeter",
+        kind: "number",
+        label: { en: "Perimeter", ru: "Периметр" },
+        unitKind: "length",
+        min: 4,
+        max: 150,
+        defaultMetric: 25,
+        defaultImperial: 80,
+      },
+      {
+        id: "height",
+        kind: "number",
+        label: { en: "Wall height", ru: "Высота стен" },
+        unitKind: "height",
+        min: 2.2,
+        max: 4,
+        step: 0.05,
+        defaultMetric: 2.6,
+        defaultImperial: 8.5,
+      },
+      {
+        id: "allowance",
+        kind: "number",
+        label: { en: "Pattern allowance", ru: "Припуск рисунка" },
+        unitKind: "length",
+        min: 0.05,
+        max: 0.5,
+        step: 0.01,
+        defaultMetric: 0.1,
+        defaultImperial: 0.1,
+      },
+      {
+        id: "rollLength",
+        kind: "number",
+        label: { en: "Roll length", ru: "Длина рулона" },
+        unitKind: "length",
+        min: 8,
+        max: 12,
+        step: 0.01,
+        defaultMetric: 10.05,
+        defaultImperial: 10.0,
+      },
+      {
+        id: "rollWidth",
+        kind: "number",
+        label: { en: "Roll width", ru: "Ширина рулона" },
+        unitKind: "width",
+        min: 0.45,
+        max: 0.7,
+        step: 0.01,
+        defaultMetric: 0.53,
+        defaultImperial: 0.52,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "What if walls are different heights?",
+          ru: "Что если стены разной высоты?",
+        },
+        answer: {
+          en: "Use the highest wall to keep pattern repeats aligned, then trim off excess during installation.",
+          ru: "Используйте максимальную высоту, чтобы рисунок совпадал, а остаток срежьте при поклейке.",
+        },
+      },
+      {
+        question: { en: "Do I add doors?", ru: "Нужно ли вычитать двери?" },
+        answer: {
+          en: "Doors rarely reduce consumption because seams must wrap openings. Leave them in perimeter for safety.",
+          ru: "Двери обычно не сокращают расход, так как швы идут по краям проёма. Оставьте их в периметре.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "brick",
+    category: "brick",
+    rating: 4,
+    formulaKey: "brick",
+    wasteKey: "brick",
+    title: {
+      en: "Brick & mortar",
+      ru: "Кирпич и раствор",
+    },
+    description: {
+      en: "Wall area times regional brick density yields bricks and mortar volume.",
+      ru: "Площадь стены умножается на норму кирпича и даёт расход кирпича и раствора.",
+    },
+    howItWorks: {
+      en: "Wall area × bricks per m² returns quantity. Mortar per m² estimates cement-sand mix volume.",
+      ru: "Площадь стены × кирпичей на м² — это количество. Раствор определяется по норме м³/м².",
+    },
+    resultLabels: [
+      {
+        id: "bricks",
+        label: { en: "Bricks", ru: "Кирпичи" },
+        siUnit: "ea",
+      },
+      {
+        id: "mortar",
+        label: { en: "Mortar volume", ru: "Объём раствора" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+    ],
+    inputs: [
+      {
+        id: "wallArea",
+        kind: "number",
+        label: { en: "Wall area", ru: "Площадь стены" },
+        unitKind: "area",
+        min: 2,
+        max: 300,
+        defaultMetric: 42,
+        defaultImperial: 140,
+      },
+      {
+        id: "bricksPerSqm",
+        kind: "number",
+        label: { en: "Bricks per m²", ru: "Кирпичей на м²" },
+        unitKind: "count",
+        min: 40,
+        max: 70,
+        step: 1,
+        defaultMetric: 52,
+        defaultImperial: 50,
+      },
+      {
+        id: "mortarPerSqm",
+        kind: "number",
+        label: { en: "Mortar per m² (m³)", ru: "Раствор на м² (м³)" },
+        unitKind: "volume",
+        min: 0.02,
+        max: 0.06,
+        step: 0.001,
+        defaultMetric: 0.035,
+        defaultImperial: 0.036,
+      },
+    ],
+    faq: [
+      {
+        question: { en: "Does it include reinforcement?", ru: "Учитывается армопояс?" },
+        answer: {
+          en: "Lintels and bond beams vary widely and should be added separately.",
+          ru: "Армопояса рассчитываются отдельно, так как нормы сильно различаются.",
+        },
+      },
+      {
+        question: {
+          en: "Which brick type?",
+          ru: "Какой тип кирпича?",
+        },
+        answer: {
+          en: "The density value already reflects the local brick dimension (modular, standard, etc.). Override it for custom bricks.",
+          ru: "Норма учитывает распространённые размеры (модульный, евро и т.д.). Измените параметр для нестандартного кирпича.",
+        },
+      },
+    ],
+    guide: {
+      intro: {
+        en: "Follow regional codes for structural brickwork and curing.",
+        ru: "Следуйте региональным нормам по кладке и выдержке кирпича.",
+      },
+      sections: [
+        {
+          type: "paragraph",
+          body:
+            "Keep mortar joints 10–12 mm, butter both head and bed joints, and tool the joint once it begins to firm up.",
+        },
+        {
+          type: "list",
+          items: [
+            "Soak clay bricks in hot climates to avoid flash drying.",
+            "Stage pallets within 10 m of the wall to limit handling.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    slug: "insulation",
+    category: "insulation",
+    rating: 5,
+    formulaKey: "insulation",
+    wasteKey: "insulation",
+    title: {
+      en: "Insulation",
+      ru: "Утеплитель",
+    },
+    description: {
+      en: "Calculate insulation volume and rolls for walls, roofs, or floors.",
+      ru: "Расчёт объёма утеплителя и количества рулонов для стен, крыш или полов.",
+    },
+    howItWorks: {
+      en: "Surface area multiplied by insulation thickness gives volume. Roll coverage determines quantity needed.",
+      ru: "Площадь поверхности умножается на толщину утеплителя — получаем объём. Покрытие рулона определяет количество.",
+    },
+    resultLabels: [
+      {
+        id: "volume",
+        label: { en: "Insulation volume", ru: "Объём утеплителя" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+      {
+        id: "rolls",
+        label: { en: "Rolls", ru: "Рулоны" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "area",
+        kind: "number",
+        label: { en: "Surface area", ru: "Площадь поверхности" },
+        unitKind: "area",
+        min: 5,
+        max: 500,
+        defaultMetric: 50,
+        defaultImperial: 160,
+      },
+      {
+        id: "thickness",
+        kind: "number",
+        label: { en: "Insulation thickness", ru: "Толщина утеплителя" },
+        unitKind: "thickness",
+        min: 0.05,
+        max: 0.3,
+        step: 0.01,
+        defaultMetric: 0.1,
+        defaultImperial: 0.1,
+      },
+      {
+        id: "rollArea",
+        kind: "number",
+        label: { en: "Roll coverage (m²)", ru: "Покрытие рулона (м²)" },
+        unitKind: "area",
+        min: 5,
+        max: 20,
+        step: 0.1,
+        defaultMetric: 10,
+        defaultImperial: 9.3,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Does it work for different insulation types?",
+          ru: "Подходит ли для разных типов утеплителя?",
+        },
+        answer: {
+          en: "Yes, adjust thickness and roll coverage based on material (mineral wool, foam, etc.).",
+          ru: "Да, скорректируйте толщину и покрытие рулона в зависимости от материала (минвата, пенопласт и т.д.).",
+        },
+      },
+      {
+        question: {
+          en: "What about irregular surfaces?",
+          ru: "А для неровных поверхностей?",
+        },
+        answer: {
+          en: "Increase waste factor to 10–12% for complex shapes or add extra area manually.",
+          ru: "Увеличьте коэффициент отходов до 10–12% для сложных форм или добавьте площадь вручную.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "plaster",
+    category: "plaster",
+    rating: 4,
+    formulaKey: "plaster",
+    wasteKey: "plaster",
+    title: {
+      en: "Plaster",
+      ru: "Штукатурка",
+    },
+    description: {
+      en: "Calculate plaster volume and bags needed for wall finishing.",
+      ru: "Расчёт объёма штукатурки и количества мешков для отделки стен.",
+    },
+    howItWorks: {
+      en: "Wall area multiplied by layer thickness gives volume. Coverage per bag determines quantity.",
+      ru: "Площадь стены умножается на толщину слоя — получаем объём. Покрытие мешка определяет количество.",
+    },
+    resultLabels: [
+      {
+        id: "area",
+        label: { en: "Wall area", ru: "Площадь стен" },
+        siUnit: "m²",
+      },
+      {
+        id: "volume",
+        label: { en: "Plaster volume", ru: "Объём штукатурки" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+      {
+        id: "bags",
+        label: { en: "Bags", ru: "Мешки" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "area",
+        kind: "number",
+        label: { en: "Wall area", ru: "Площадь стен" },
+        unitKind: "area",
+        min: 5,
+        max: 300,
+        defaultMetric: 40,
+        defaultImperial: 130,
+      },
+      {
+        id: "thickness",
+        kind: "number",
+        label: { en: "Layer thickness", ru: "Толщина слоя" },
+        unitKind: "thickness",
+        min: 0.005,
+        max: 0.05,
+        step: 0.001,
+        defaultMetric: 0.01,
+        defaultImperial: 0.01,
+      },
+      {
+        id: "coveragePerBag",
+        kind: "number",
+        label: { en: "Coverage per bag (m³)", ru: "Покрытие мешка (м³)" },
+        unitKind: "volume",
+        min: 0.05,
+        max: 0.2,
+        step: 0.01,
+        defaultMetric: 0.1,
+        defaultImperial: 0.1,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Does it include primer?",
+          ru: "Учитывается ли грунтовка?",
+        },
+        answer: {
+          en: "No, primer is calculated separately. Add it to your material list if needed.",
+          ru: "Нет, грунтовка рассчитывается отдельно. Добавьте её в список материалов при необходимости.",
+        },
+      },
+      {
+        question: {
+          en: "What about textured finishes?",
+          ru: "А для фактурной отделки?",
+        },
+        answer: {
+          en: "Textured finishes may require 15–20% more material. Adjust waste factor accordingly.",
+          ru: "Фактурная отделка может потребовать на 15–20% больше материала. Скорректируйте коэффициент отходов.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "screed",
+    category: "screed",
+    rating: 4,
+    formulaKey: "screed",
+    wasteKey: "screed",
+    title: {
+      en: "Floor screed",
+      ru: "Стяжка пола",
+    },
+    description: {
+      en: "Calculate screed volume, cement, and sand for floor leveling.",
+      ru: "Расчёт объёма стяжки, цемента и песка для выравнивания пола.",
+    },
+    howItWorks: {
+      en: "Floor area multiplied by screed thickness gives volume. Cement and sand ratios determine material quantities.",
+      ru: "Площадь пола умножается на толщину стяжки — получаем объём. Пропорции цемента и песка определяют количество материалов.",
+    },
+    resultLabels: [
+      {
+        id: "volume",
+        label: { en: "Screed volume", ru: "Объём стяжки" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+      {
+        id: "cementWeight",
+        label: { en: "Cement weight", ru: "Вес цемента" },
+        siUnit: "kg",
+        metricUnit: "kg",
+        imperialUnit: "lb",
+      },
+      {
+        id: "cementBags",
+        label: { en: "Cement bags (50kg)", ru: "Мешки цемента (50кг)" },
+        siUnit: "ea",
+      },
+      {
+        id: "sandVolume",
+        label: { en: "Sand volume", ru: "Объём песка" },
+        siUnit: "m³",
+        metricUnit: "m³",
+        imperialUnit: "yd³",
+      },
+    ],
+    inputs: [
+      {
+        id: "area",
+        kind: "number",
+        label: { en: "Floor area", ru: "Площадь пола" },
+        unitKind: "area",
+        min: 5,
+        max: 500,
+        defaultMetric: 30,
+        defaultImperial: 100,
+      },
+      {
+        id: "thickness",
+        kind: "number",
+        label: { en: "Screed thickness", ru: "Толщина стяжки" },
+        unitKind: "thickness",
+        min: 0.03,
+        max: 0.15,
+        step: 0.01,
+        defaultMetric: 0.05,
+        defaultImperial: 0.05,
+      },
+      {
+        id: "cementRatio",
+        kind: "number",
+        label: { en: "Cement ratio", ru: "Доля цемента" },
+        unitKind: "percent",
+        min: 0.1,
+        max: 0.4,
+        step: 0.05,
+        defaultMetric: 0.2,
+        defaultImperial: 0.2,
+      },
+      {
+        id: "sandRatio",
+        kind: "number",
+        label: { en: "Sand ratio", ru: "Доля песка" },
+        unitKind: "percent",
+        min: 2,
+        max: 5,
+        step: 0.5,
+        defaultMetric: 3,
+        defaultImperial: 3,
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "What mix ratio should I use?",
+          ru: "Какое соотношение смеси использовать?",
+        },
+        answer: {
+          en: "Standard is 1:3 (cement:sand) for most floors. Use 1:4 for lighter loads or 1:2 for heavy traffic.",
+          ru: "Стандартное соотношение 1:3 (цемент:песок) для большинства полов. Используйте 1:4 для лёгких нагрузок или 1:2 для интенсивного движения.",
+        },
+      },
+      {
+        question: {
+          en: "Does it include reinforcement?",
+          ru: "Учитывается ли армирование?",
+        },
+        answer: {
+          en: "No, mesh or fiber reinforcement is calculated separately. Add it to your material list.",
+          ru: "Нет, сетка или фиброволокно рассчитываются отдельно. Добавьте их в список материалов.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "electrical",
+    category: "electrical",
+    rating: 4,
+    formulaKey: "electrical",
+    wasteKey: "electrical",
+    title: {
+      en: "Electrical wiring",
+      ru: "Электрика",
+    },
+    description: {
+      en: "Calculate cable length, outlets, switches, and conduits for room wiring.",
+      ru: "Расчёт длины кабеля, розеток, выключателей и гофры для проводки в помещении.",
+    },
+    howItWorks: {
+      en: "Perimeter and height determine horizontal and vertical runs. Socket and switch counts add vertical drops.",
+      ru: "Периметр и высота определяют горизонтальные и вертикальные участки. Количество розеток и выключателей добавляет вертикальные спуски.",
+    },
+    resultLabels: [
+      {
+        id: "cableLength",
+        label: { en: "Cable length", ru: "Длина кабеля" },
+        siUnit: "m",
+        metricUnit: "m",
+        imperialUnit: "ft",
+      },
+      {
+        id: "sockets",
+        label: { en: "Sockets", ru: "Розетки" },
+        siUnit: "ea",
+      },
+      {
+        id: "switches",
+        label: { en: "Switches", ru: "Выключатели" },
+        siUnit: "ea",
+      },
+      {
+        id: "conduits",
+        label: { en: "Conduits", ru: "Гофра" },
+        siUnit: "ea",
+      },
+    ],
+    inputs: [
+      {
+        id: "perimeter",
+        kind: "number",
+        label: { en: "Room perimeter", ru: "Периметр комнаты" },
+        unitKind: "length",
+        min: 4,
+        max: 200,
+        defaultMetric: 40,
+        defaultImperial: 130,
+      },
+      {
+        id: "height",
+        kind: "number",
+        label: { en: "Ceiling height", ru: "Высота потолка" },
+        unitKind: "height",
+        min: 2.2,
+        max: 6,
+        step: 0.1,
+        defaultMetric: 2.7,
+        defaultImperial: 9,
+      },
+      {
+        id: "sockets",
+        kind: "number",
+        label: { en: "Number of sockets", ru: "Количество розеток" },
+        unitKind: "count",
+        min: 1,
+        max: 50,
+        step: 1,
+        defaultMetric: 10,
+        defaultImperial: 10,
+      },
+      {
+        id: "switches",
+        kind: "number",
+        label: { en: "Number of switches", ru: "Количество выключателей" },
+        unitKind: "count",
+        min: 1,
+        max: 30,
+        step: 1,
+        defaultMetric: 5,
+        defaultImperial: 5,
+      },
+      {
+        id: "cableType",
+        kind: "select",
+        label: { en: "Cable type", ru: "Тип кабеля" },
+        options: [
+          { value: "1.5", label: { en: "1.5 mm²", ru: "1.5 мм²" } },
+          { value: "2.5", label: { en: "2.5 mm²", ru: "2.5 мм²" } },
+          { value: "4", label: { en: "4 mm²", ru: "4 мм²" } },
+          { value: "6", label: { en: "6 mm²", ru: "6 мм²" } },
+        ],
+        defaultMetric: "2.5",
+        defaultImperial: "2.5",
+      },
+    ],
+    faq: [
+      {
+        question: {
+          en: "Does it include junction boxes?",
+          ru: "Учитываются ли распределительные коробки?",
+        },
+        answer: {
+          en: "No, junction boxes are calculated separately. Typically one per room plus one per circuit.",
+          ru: "Нет, распределительные коробки рассчитываются отдельно. Обычно одна на комнату плюс одна на цепь.",
+        },
+      },
+      {
+        question: {
+          en: "What about three-phase wiring?",
+          ru: "А для трёхфазной проводки?",
+        },
+        answer: {
+          en: "Multiply cable length by 3 for three-phase circuits. Add separate calculations for each phase if needed.",
+          ru: "Умножьте длину кабеля на 3 для трёхфазных цепей. При необходимости добавьте отдельные расчёты для каждой фазы.",
+        },
+      },
+    ],
+  },
+];
+
+

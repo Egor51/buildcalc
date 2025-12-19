@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact amount of paint needed for interior or exterior walls, accounting for room perimeter, wall height, door and window openings, number of coats, and country-specific coverage rates. Coverage varies by paint type: latex typically covers 8-12 m²/L (320-480 ft²/gal), while oil-based paints cover 6-10 m²/L (240-400 ft²/gal). The calculator automatically applies waste factors based on your country's standards.",
+  "steps": [
+    {
+      "title": "Measure Room Perimeter",
+      "description": "Add up all wall lengths in the room. For a rectangular room: Perimeter = 2 × (Length + Width). For L-shaped or irregular rooms, measure each wall segment separately and sum them. Typical residential rooms have perimeters of 12-30m (40-100ft)."
+    },
+    {
+      "title": "Enter Wall Height",
+      "description": "Measure from floor to ceiling. Standard ceiling heights are 2.4-2.7m (8-9ft) in most countries, but can range from 2.1m (7ft) in older homes to 3m+ (10ft+) in modern construction. Measure at multiple points and use the average if heights vary."
+    },
+    {
+      "title": "Subtract Openings",
+      "description": "Calculate the area of all doors and windows. Standard door: 2.0m² (21ft²), single window: 1.5-2.5m² (16-27ft²), double window: 3-4m² (32-43ft²). For multiple openings, sum their areas. The calculator subtracts this from total wall area automatically."
+    },
+    {
+      "title": "Select Number of Coats",
+      "description": "Most interior walls need 2 coats for even coverage and color depth. Dark colors or color changes may require 3 coats. Exterior surfaces typically need 2-3 coats depending on substrate condition. Primer counts as a separate coat if using a different product."
+    },
+    {
+      "title": "Check Coverage Rate",
+      "description": "Coverage is automatically set based on your country's defaults (typically 8-12 m²/L for latex). Premium paints often have higher coverage (10-14 m²/L), while budget paints may cover less (6-9 m²/L). Check your paint can label for exact coverage."
+    },
+    {
+      "title": "Calculate and Order",
+      "description": "The calculator shows total paintable area, paint volume needed, and estimated packaging (cans/buckets). Always round up to the nearest full container. For example, if you need 8.2L, order 9L (or two 5L cans) to ensure you have enough for touch-ups."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Forgetting to subtract openings",
+      "solution": "Doors and windows can account for 10-20% of wall area. Not subtracting them leads to 10-20% over-ordering, which wastes money. Always measure and subtract all openings accurately."
+    },
+    {
+      "mistake": "Underestimating coats needed",
+      "solution": "One coat is rarely sufficient, even with high-quality paint. Budget for 2 coats minimum. Dark colors, color changes, and porous surfaces (like new drywall) often need 3 coats for proper coverage."
+    },
+    {
+      "mistake": "Using wrong coverage rate",
+      "solution": "Coverage varies significantly by paint type and quality. Premium paints (10-14 m²/L) cover more than budget paints (6-9 m²/L). Always check the paint can label and adjust the calculator if needed."
+    },
+    {
+      "mistake": "Not accounting for texture and surface condition",
+      "solution": "Textured walls (popcorn, stucco) require 20-30% more paint than smooth walls. Rough or porous surfaces (new drywall, unpainted masonry) absorb more paint. Add 15-25% extra for these conditions."
+    }
+  ],
+  "proTips": [
+    "Buy 10-15% extra paint for touch-ups and future repairs. Store leftover paint in sealed containers labeled with room and color code.",
+    "For color changes (especially dark to light), budget for 3 coats. Primer helps but doesn't eliminate the need for extra coats.",
+    "Textured surfaces (popcorn ceilings, stucco) require 20-30% more paint. Measure texture depth and adjust accordingly.",
+    "Exterior paint typically needs higher coverage rates (10-12 m²/L) due to thicker formulations, but check your specific product.",
+    "For trim and doors, calculate separately: they often need different paint types (semi-gloss or gloss) and have different coverage rates.",
+    "Keep paint from the same batch for consistency. Mix multiple cans together if you need more than one container (boxing)."
+  ],
+  "faq": [
+    {
+      "question": "How do I calculate paint for multiple rooms?",
+      "answer": "Calculate each room separately, then sum the total paint volume. This ensures accurate accounting for different room sizes, ceiling heights, and opening sizes. Add 10% to the total for touch-ups and waste."
+    },
+    {
+      "question": "Does the calculator account for primer?",
+      "answer": "Primer is treated as a separate coat. If you're using primer + 2 coats of paint, select 3 coats total. Some primers have different coverage rates, so calculate primer separately if using a different product."
+    },
+    {
+      "question": "What's the difference between interior and exterior paint coverage?",
+      "answer": "Exterior paints are typically thicker and may cover slightly less (8-10 m²/L) than interior paints (10-12 m²/L), but formulations vary. Always check the product label for exact coverage rates."
+    },
+    {
+      "question": "How much extra should I buy for touch-ups?",
+      "answer": "Buy 10-15% extra beyond calculated needs. This covers minor touch-ups, future repairs, and ensures you have paint from the same batch for consistency. Store leftovers in sealed containers."
+    },
+    {
+      "question": "What if my walls are textured?",
+      "answer": "Textured surfaces (popcorn, stucco, heavy texture) require 20-30% more paint than smooth walls. Add this percentage to your calculated volume, or use a coverage rate 20-30% lower than smooth wall rates."
+    },
+    {
+      "question": "Can I use this for ceilings?",
+      "answer": "Yes, but calculate ceilings separately. Use room length × width for area (no perimeter needed). Ceilings often need different paint types (flat or matte finish) and may have different coverage rates."
+    },
+    {
+      "question": "How do I account for trim and doors?",
+      "answer": "Calculate trim and doors separately. Measure linear feet/meters of trim and square feet/meters of doors. Trim typically uses semi-gloss or gloss paint with coverage of 10-12 m²/L. Doors are usually 2-3 m² each."
+    },
+    {
+      "question": "What about paint for color changes?",
+      "answer": "Color changes, especially dark to light, typically require 3 coats for proper coverage. Budget for the extra coat. Using a tinted primer can reduce this to 2 coats in some cases."
+    }
+  ],
+  "relatedCalculators": ["wallpaper", "plaster", "drywall", "tile"],
+  "lastUpdated": "2025-12-18"
+}

@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact number of tiles needed for floors, walls, backsplashes, or showers. Accounts for tile size, grout spacing, waste factors (typically 10-15% for standard layouts, 15-20% for diagonal or herringbone patterns), and country-specific standards. Supports ceramic, porcelain, natural stone, and mosaic tiles in both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Surface Area",
+      "description": "For floors: measure length × width. For walls: measure height × width, subtract doors/windows. For backsplashes: measure length × height. Use the same unit system (meters or feet) throughout. Record measurements at widest points."
+    },
+    {
+      "title": "Enter Tile Dimensions",
+      "description": "Input tile length and width. Common sizes: 30×30cm (12×12in), 60×60cm (24×24in), 30×60cm (12×24in). For mosaic sheets, enter sheet dimensions. The calculator accounts for grout spacing automatically."
+    },
+    {
+      "title": "Set Grout Spacing",
+      "description": "Standard grout spacing is 2-3mm (1/16-1/8in) for small tiles and 3-5mm (1/8-3/16in) for large tiles. Wider spacing (5-10mm) is used for natural stone. This affects tile count and material needs."
+    },
+    {
+      "title": "Select Layout Pattern",
+      "description": "Straight/offset layouts need 10-15% waste. Diagonal layouts need 15-20% waste. Herringbone or complex patterns need 20-25% waste. The calculator applies appropriate waste factors based on your selection."
+    },
+    {
+      "title": "Calculate Tile Count",
+      "description": "The calculator shows: total tiles needed, boxes/packs required (based on coverage per box), grout volume needed, and total cost estimate. Always round up to full boxes and add 5-10% extra for breakage and future repairs."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all tiles from the same batch/lot for color consistency. Buy 10-15% extra for future repairs. Calculate grout separately: typically 1.5-2kg per m² for 3mm spacing, more for wider joints."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for grout spacing",
+      "solution": "Grout spacing reduces the number of tiles needed. A 3mm grout line on 30cm tiles means each tile effectively covers 30.3cm. The calculator accounts for this automatically, but verify your spacing matches the calculation."
+    },
+    {
+      "mistake": "Underestimating waste for diagonal layouts",
+      "solution": "Diagonal and herringbone patterns create triangular offcuts that increase waste to 15-25% (vs 10-15% for straight layouts). Always add extra for pattern matching and cuts around obstacles."
+    },
+    {
+      "mistake": "Forgetting to subtract fixtures and obstacles",
+      "solution": "Subtract areas for toilets, vanities, bathtubs, and other fixtures. For complex cuts around pipes or corners, add 5% extra waste. Measure fixture footprints accurately."
+    },
+    {
+      "mistake": "Not ordering extra from the same batch",
+      "solution": "Tile colors vary between batches. Always order 10-15% extra from the same batch/lot number for future repairs. Store leftovers properly to prevent damage."
+    }
+  ],
+  "proTips": [
+    "Buy all tiles from the same batch/lot number. Color variations between batches can be noticeable, especially with natural stone or hand-painted tiles.",
+    "For diagonal layouts, add 20% waste instead of 15%. The diagonal cuts create more triangular offcuts that can't be reused.",
+    "Calculate grout separately based on joint width and depth. Standard: 1.5-2kg per m² for 3mm joints, 2.5-3.5kg for 5mm joints.",
+    "For mosaic tiles, account for sheet size and pattern repeat. Some mosaics have directional patterns that affect layout and waste.",
+    "Keep 10-15% extra tiles for future repairs. Manufacturers discontinue colors, and you'll need matching tiles for damage or expansion.",
+    "For wet areas (showers, backsplashes), add waterproofing membrane to your material list. Calculate membrane area separately (typically same as tile area)."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Straight/offset layouts: 10-15% waste. Diagonal layouts: 15-20% waste. Herringbone or complex patterns: 20-25% waste. Always add 10-15% extra beyond calculated needs for future repairs and breakage."
+    },
+    {
+      "question": "Do I need to calculate grout separately?",
+      "answer": "Yes, grout is calculated separately. Standard grout usage: 1.5-2kg per m² for 3mm joints, 2.5-3.5kg for 5mm joints. Wider joints or deeper tiles require more grout. Always buy 10-20% extra."
+    },
+    {
+      "question": "How do I account for tile cuts around obstacles?",
+      "answer": "For simple cuts (straight edges), the standard waste factor covers this. For complex cuts (pipes, corners, irregular shapes), add 5% extra waste. Measure obstacle footprints and subtract from total area."
+    },
+    {
+      "question": "What about mosaic tiles?",
+      "answer": "Mosaic tiles are sold in sheets. Calculate based on sheet dimensions and coverage. Account for pattern repeat if the mosaic has directional patterns. Standard waste: 15-20% for mosaics due to sheet cutting."
+    },
+    {
+      "question": "Should I order extra tiles?",
+      "answer": "Yes, always order 10-15% extra from the same batch/lot. Tile colors vary between batches, and you'll need matching tiles for future repairs, damage, or expansion. Manufacturers discontinue colors regularly."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum totals. This helps identify waste factors per room and ensures accurate accounting for different room sizes, layouts, and obstacle patterns."
+    },
+    {
+      "question": "What's the difference between ceramic and porcelain tile calculations?",
+      "answer": "Calculation method is the same, but porcelain tiles are typically larger (60×60cm vs 30×30cm), which can reduce waste slightly. Both use the same waste factors based on layout pattern, not tile type."
+    },
+    {
+      "question": "Do I need waterproofing membrane?",
+      "answer": "For wet areas (showers, backsplashes, wet rooms), yes. Calculate membrane area separately (typically same as tile area). Membrane comes in rolls (typically 1m × 5-10m). Add 10% for overlaps and cuts."
+    }
+  ],
+  "relatedCalculators": ["flooring", "waterproofing", "plaster", "paint"],
+  "lastUpdated": "2025-12-18"
+}

@@ -1,0 +1,87 @@
+{
+  "intro": "Accurately calculate the volume of concrete needed for slabs, foundations, columns, and other structural elements. This calculator accounts for standard waste factors (typically 5-10%) required by building codes to cover pumping losses, spillage, and finishing cuts. Supports both metric (m³) and imperial (yd³) units with automatic conversion.",
+  "steps": [
+    {
+      "title": "Select Shape Type",
+      "description": "Choose between 'Slab' for rectangular foundations and floors, or 'Cylinder' for columns and round footings. Slabs require length, width, and thickness. Cylinders need diameter and height."
+    },
+    {
+      "title": "Enter Dimensions",
+      "description": "Input measurements in your preferred unit system. For slabs: length (typically 4-12m or 12-40ft), width (3-8m or 10-26ft), and thickness (0.1-0.3m or 4-12in). For cylinders: diameter (0.2-2m or 8in-6ft) and height (0.5-6m or 2-20ft)."
+    },
+    {
+      "title": "Review Waste Factor",
+      "description": "The calculator applies a country-specific waste factor (usually 5-10%) based on local building standards. This covers concrete lost during pumping, spillage, and cutting. You can adjust this if your project has specific requirements."
+    },
+    {
+      "title": "Calculate Volume",
+      "description": "Click calculate to see the total concrete volume needed. The result shows both the base volume and the volume including waste. For slabs: Volume = Length × Width × Thickness. For cylinders: Volume = π × (Diameter/2)² × Height."
+    },
+    {
+      "title": "Order Ready-Mix",
+      "description": "Use the calculated volume to order ready-mix concrete from your supplier. Standard truck loads are typically 6-10 m³ (8-13 yd³). Round up to the nearest truck load to avoid shortfalls."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Forgetting to account for waste factor",
+      "solution": "Always include the 5-10% waste factor. Running short means delays, extra delivery costs, and potential cold joints if you can't pour continuously."
+    },
+    {
+      "mistake": "Measuring dimensions incorrectly",
+      "solution": "Measure the actual formwork dimensions, not the finished floor area. Add 2-5cm (1-2in) extra if you're pouring over existing surfaces that need leveling."
+    },
+    {
+      "mistake": "Not considering reinforcement displacement",
+      "solution": "Rebar volume is negligible (typically <1% of total), so it's not deducted. However, for heavily reinforced sections (>3% steel), you might add 2-3% extra volume."
+    },
+    {
+      "mistake": "Ignoring unit system consistency",
+      "solution": "Ensure all dimensions use the same unit system. Mixing meters with feet will give incorrect results. The calculator handles conversion automatically if you switch units mid-calculation."
+    }
+  ],
+  "proTips": [
+    "Order 10-15% extra for small projects (<5 m³) to account for formwork irregularities and finishing needs.",
+    "For exposed aggregate or decorative finishes, add 5% extra volume to ensure you have enough material for the top layer.",
+    "Coordinate with your ready-mix supplier to schedule deliveries in 2-3 hour intervals to avoid cold joints.",
+    "Use the cylinder mode for round columns, but remember that most columns have square bases—use slab mode for those.",
+    "For sloped surfaces, calculate the average thickness: (min thickness + max thickness) / 2.",
+    "Keep a small reserve (1-2 m³) on-site for patching and touch-ups after formwork removal."
+  ],
+  "faq": [
+    {
+      "question": "Does the volume include reinforcement?",
+      "answer": "No, rebar volume is not deducted because steel displacement is negligible at typical reinforcement ratios (usually <1% of total volume). For heavily reinforced sections (>3% steel by volume), you may want to add 2-3% extra concrete."
+    },
+    {
+      "question": "Why is there a waste factor?",
+      "answer": "Building codes in most countries require a minimum overage (typically 5-10%) to cover pumping losses, spillage during transport, and finishing cuts. This prevents shortfalls that cause delays and additional delivery costs."
+    },
+    {
+      "question": "How do I convert between m³ and yd³?",
+      "answer": "1 cubic meter (m³) = 1.308 cubic yards (yd³). The calculator handles this conversion automatically. For reference: 1 m³ ≈ 1.31 yd³, so multiply m³ by 1.31 to get yd³."
+    },
+    {
+      "question": "What if my slab has openings or cutouts?",
+      "answer": "Calculate the main slab volume first, then subtract the volume of openings (length × width × thickness). For irregular shapes, break them into rectangles and calculate each separately."
+    },
+    {
+      "question": "How much concrete does a standard truck carry?",
+      "answer": "Ready-mix trucks typically carry 6-10 m³ (8-13 yd³) per load. Smaller trucks (4-6 m³) are available for tight access sites. Always confirm capacity with your supplier before ordering."
+    },
+    {
+      "question": "Should I order extra for small batches?",
+      "answer": "Yes, for projects under 5 m³, order 10-15% extra because small batches have proportionally higher waste from formwork cleanup and finishing. For larger projects (>20 m³), the standard 5-10% waste factor is usually sufficient."
+    },
+    {
+      "question": "Can I use this for post-tensioned slabs?",
+      "answer": "Yes, but post-tensioned slabs often have varying thickness. Calculate each thickness zone separately and sum the volumes. Also account for the volume occupied by ducts (typically add 2-3% extra)."
+    },
+    {
+      "question": "What about sloped or tapered surfaces?",
+      "answer": "For sloped surfaces, use the average thickness: (minimum thickness + maximum thickness) / 2. For complex tapers, break the area into zones with uniform thickness and calculate each zone separately."
+    }
+  ],
+  "relatedCalculators": ["screed", "brick", "plaster", "cement"],
+  "lastUpdated": "2025-12-18"
+}

@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact amount of roofing materials needed for your project, including shingles, tiles, metal sheets, or membrane. Accounts for roof area, pitch/slope, waste factors (typically 10-15% for simple roofs, 15-20% for complex roofs with valleys and hips), and country-specific material standards. Supports both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Roof Dimensions",
+      "description": "Measure the length and width of each roof plane. For gable roofs, measure the building length and rafter length (from eave to ridge). For hip roofs, measure each plane separately. Use a tape measure on the ground and calculate based on building footprint if safe access isn't available."
+    },
+    {
+      "title": "Calculate Roof Area",
+      "description": "For simple gable roofs: Area = Building Length × Rafter Length × 2 (both sides). For hip roofs, calculate each plane separately and sum. Account for roof pitch: steeper roofs have more surface area. The calculator applies pitch multipliers automatically."
+    },
+    {
+      "title": "Account for Roof Pitch",
+      "description": "Roof pitch affects material needs. A 4:12 pitch (18.4°) increases area by ~8% vs flat. A 6:12 pitch (26.6°) increases by ~12%. A 12:12 pitch (45°) increases by ~41%. Enter pitch ratio (rise:run) or angle, and the calculator adjusts area accordingly."
+    },
+    {
+      "title": "Add Waste Factor",
+      "description": "Simple roofs (gable, hip) need 10-15% waste for cuts and starter/ridge caps. Complex roofs (valleys, dormers, multiple angles) need 15-20% waste. Steeper pitches (>8:12) may need 5% extra due to increased cutting."
+    },
+    {
+      "title": "Select Material Type",
+      "description": "Different materials have different coverage: asphalt shingles (3 bundles per 100 ft²), metal panels (varies by width), tiles (varies by size), membrane (roll coverage). The calculator accounts for material-specific coverage and packaging."
+    },
+    {
+      "title": "Calculate and Order",
+      "description": "The calculator shows total roof area, material needed (including waste), and number of bundles/rolls/sheets required. Always round up to full packages. Order 5-10% extra for future repairs and to ensure batch matching."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for roof pitch",
+      "solution": "Steeper roofs have significantly more surface area than flat roofs. A 12:12 pitch has 41% more area than flat. Always enter pitch ratio or angle. If unsure, use a pitch finder tool or consult building plans."
+    },
+    {
+      "mistake": "Forgetting valleys, hips, and dormers",
+      "solution": "Complex roof features (valleys where two planes meet, hips, dormers) require extra material and increase waste to 15-20%. Measure these areas separately and add to total, or use the complex roof waste factor."
+    },
+    {
+      "mistake": "Not ordering starter and ridge caps separately",
+      "solution": "Starter strips (along eaves) and ridge caps (along peak) are calculated separately from field shingles. Measure linear feet/meters of eave and ridge, then calculate based on material coverage per linear unit."
+    },
+    {
+      "mistake": "Underestimating waste for complex roofs",
+      "solution": "Simple gable roofs need 10-15% waste. Roofs with valleys, multiple angles, or dormers need 15-20% waste. Steeper pitches (>8:12) may need 5% extra. Always use the higher waste factor for complex roofs."
+    }
+  ],
+  "proTips": [
+    "Measure roof from the ground using building footprint and pitch. Use a pitch finder app or measure rise:run ratio. Never guess pitch—it significantly affects material needs.",
+    "For complex roofs, break into simple shapes (rectangles, triangles) and calculate each separately. Sum the totals and add 15-20% waste for the entire roof.",
+    "Order starter strips and ridge caps separately. Measure linear feet/meters of eave and ridge. Standard coverage: 1 bundle covers ~33 linear feet of eave or ridge.",
+    "Buy all shingles from the same batch/lot. Color variations between batches are noticeable, especially with architectural shingles. Order 5-10% extra for future repairs.",
+    "For metal roofing, account for panel width and overlap. Standard panels are 12-16 inches wide with 1-2 inch overlap. Calculate based on effective coverage width, not panel width.",
+    "Coordinate with your roofer on waste factors. Professional roofers may use different waste factors based on experience with your specific roof type and material."
+  ],
+  "faq": [
+    {
+      "question": "How do I measure roof area if I can't access the roof?",
+      "answer": "Measure building footprint (length × width) from the ground, then calculate based on roof pitch. For gable roofs: Footprint × Rafter Length × 2. Use a pitch finder tool or measure rise:run ratio to determine pitch multiplier."
+    },
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Simple roofs (gable, hip): 10-15% waste. Complex roofs (valleys, dormers, multiple angles): 15-20% waste. Steeper pitches (>8:12) may need 5% extra. Always add 5-10% extra for future repairs and batch matching."
+    },
+    {
+      "question": "Do I need to calculate starter and ridge caps separately?",
+      "answer": "Yes, starter strips (along eaves) and ridge caps (along peak) are calculated separately. Measure linear feet/meters of eave and ridge. Standard: 1 bundle covers ~33 linear feet. Add 10% waste for cuts."
+    },
+    {
+      "question": "How does roof pitch affect material needs?",
+      "answer": "Steeper roofs have more surface area. A 4:12 pitch increases area by ~8%, 6:12 by ~12%, 8:12 by ~18%, and 12:12 by ~41% vs flat. The calculator applies pitch multipliers automatically when you enter pitch ratio or angle."
+    },
+    {
+      "question": "What about valleys and hips?",
+      "answer": "Valleys (where two roof planes meet) and hips require extra material and increase waste. For roofs with multiple valleys/hips, use the complex roof waste factor (15-20%) instead of simple roof factor (10-15%)."
+    },
+    {
+      "question": "Can I use this for metal roofing?",
+      "answer": "Yes, but metal panels have different coverage based on panel width and overlap. Standard panels are 12-16 inches wide with 1-2 inch overlap. Calculate based on effective coverage width (panel width minus overlap), not panel width."
+    },
+    {
+      "question": "Should I order extra shingles?",
+      "answer": "Yes, order 5-10% extra from the same batch/lot. Shingle colors vary between batches, and you'll need matching shingles for future repairs or damage. Manufacturers discontinue colors regularly."
+    },
+    {
+      "question": "How do I calculate for multiple roof sections?",
+      "answer": "Calculate each roof section separately, then sum totals. This helps identify waste factors per section and ensures accurate accounting for different pitches, sizes, and complexities. Apply overall waste factor to the sum."
+    }
+  ],
+  "relatedCalculators": ["insulation", "drywall", "electrical", "screed"],
+  "lastUpdated": "2025-12-18"
+}

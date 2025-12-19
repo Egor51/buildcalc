@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact number of bricks needed for walls, foundations, or facades. Accounts for wall dimensions, brick size, mortar joints, waste factors (typically 5-10% for standard walls, 10-15% for complex patterns), and country-specific brick standards. Supports both metric and imperial units with automatic conversion.",
+  "steps": [
+    {
+      "title": "Measure Wall Dimensions",
+      "description": "Measure wall length and height. For multiple walls, measure each separately. Account for openings (doors, windows) by subtracting their area. Standard residential walls are 2.4-3.0m (8-10ft) high and 3-6m (10-20ft) long."
+    },
+    {
+      "title": "Select Brick Size",
+      "description": "Standard sizes vary by country: UK (215×102.5×65mm), US (203×92×57mm), Metric (200×100×50mm). The calculator uses country-specific defaults. Verify brick dimensions with your supplier."
+    },
+    {
+      "title": "Set Mortar Joint Thickness",
+      "description": "Standard mortar joints are 10mm (3/8in) thick. Thicker joints (12-15mm) are used for some applications. Joint thickness affects brick count: thicker joints mean fewer bricks per m²."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Standard walls need 5-10% waste for cuts and breakage. Complex patterns (herringbone, basket weave) need 10-15% waste. Always add 5-10% extra for future repairs and to ensure batch matching."
+    },
+    {
+      "title": "Calculate Brick Count",
+      "description": "The calculator shows: total wall area, number of bricks needed (including waste), and estimated mortar volume. Standard brick coverage: ~50-60 bricks per m² for 10mm joints, depending on brick size."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all bricks from the same batch for color consistency. Buy 5-10% extra for future repairs. Calculate mortar separately: typically 0.02-0.03 m³ per m² of wall (or 20-30kg of dry mix per m²)."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for mortar joints",
+      "solution": "Mortar joints reduce the number of bricks needed. A 10mm joint on standard bricks means ~50-60 bricks per m² vs ~70-80 without joints. The calculator accounts for this automatically."
+    },
+    {
+      "mistake": "Forgetting to subtract openings",
+      "solution": "Doors and windows significantly reduce brick needs. Standard door: ~2.0 m², single window: 1.5-2.5 m². Always measure and subtract all openings accurately."
+    },
+    {
+      "mistake": "Underestimating waste for complex patterns",
+      "solution": "Complex patterns (herringbone, basket weave) require 10-15% waste vs 5-10% for standard running bond. Always use the higher waste factor for decorative patterns."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 5-10% extra from the same batch. Brick colors vary between batches, and you'll need matching bricks for future repairs or damage."
+    }
+  ],
+  "proTips": [
+    "Buy all bricks from the same batch. Color variations between batches are noticeable, especially with handmade or colored bricks.",
+    "For complex patterns (herringbone, basket weave), add 15% waste instead of 10%. These patterns create more cuts and offcuts.",
+    "Calculate mortar separately: typically 0.02-0.03 m³ per m² (or 20-30kg dry mix per m²). Add 10% extra for waste and mixing.",
+    "Plan your layout before starting. Decide on bond pattern (running bond, stack bond, etc.) and how to handle corners and openings.",
+    "Keep 5-10% extra bricks for future repairs. Brick manufacturers discontinue colors, and you'll need matching bricks for damage or expansion.",
+    "For load-bearing walls, verify brick strength and mortar mix with local building codes. Structural requirements may affect material choices."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Standard walls: 5-10% waste. Complex patterns (herringbone, basket weave): 10-15% waste. Always add 5-10% extra beyond calculated needs for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "Do I need to calculate mortar separately?",
+      "answer": "Yes, mortar is calculated separately. Standard usage: 0.02-0.03 m³ per m² of wall (or 20-30kg dry mix per m²). Add 10% extra for waste and mixing. Mortar requirements vary by joint thickness and brick size."
+    },
+    {
+      "question": "How do I account for doors and windows?",
+      "answer": "Measure door and window areas, then subtract from total wall area. Standard door: ~2.0 m², single window: 1.5-2.5 m². For multiple openings, sum their areas and subtract from total."
+    },
+    {
+      "question": "Should I order extra bricks?",
+      "answer": "Yes, order 5-10% extra from the same batch. Brick colors vary between batches, and you'll need matching bricks for future repairs, damage, or expansion. Manufacturers discontinue colors regularly."
+    },
+    {
+      "question": "What about different brick sizes?",
+      "answer": "Brick sizes vary by country: UK (215×102.5×65mm), US (203×92×57mm), Metric (200×100×50mm). The calculator uses country-specific defaults. Verify dimensions with your supplier and adjust if needed."
+    },
+    {
+      "question": "How do I calculate for multiple walls?",
+      "answer": "Calculate each wall separately, then sum totals. This helps identify waste factors per wall and ensures accurate accounting for different wall sizes, heights, and opening patterns."
+    },
+    {
+      "question": "What's the difference between facing and common bricks?",
+      "answer": "Calculation method is the same, but facing bricks are typically used for visible surfaces and may have different sizes or colors. Common bricks are used for structural work. Both use the same calculation method."
+    },
+    {
+      "question": "Do I need different calculations for load-bearing vs non-load-bearing walls?",
+      "answer": "Calculation method is identical, but load-bearing walls may require stronger bricks and specific mortar mixes per building codes. Verify structural requirements with local codes, but brick count calculation remains the same."
+    }
+  ],
+  "relatedCalculators": ["cement", "concrete", "plaster", "screed"],
+  "lastUpdated": "2025-12-18"
+}

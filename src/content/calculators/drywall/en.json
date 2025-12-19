@@ -1,0 +1,87 @@
+{
+  "intro": "Calculate the exact number of drywall sheets (gypsum board, plasterboard) needed for walls and ceilings. Accounts for room dimensions, standard sheet sizes (typically 1.2m × 2.4m or 4ft × 8ft), waste factors (typically 10-15% for simple layouts, 15-20% for complex layouts with many cuts), and country-specific material standards. Supports both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Wall and Ceiling Areas",
+      "description": "For walls: measure perimeter × height, then subtract doors and windows. For ceilings: measure length × width. Use the same unit system throughout. Record all measurements in meters or feet consistently."
+    },
+    {
+      "title": "Select Sheet Size",
+      "description": "Standard sizes: 1.2m × 2.4m (4ft × 8ft), 1.2m × 3.0m (4ft × 10ft), or 1.2m × 3.6m (4ft × 12ft). Larger sheets reduce waste but are harder to handle. The calculator uses standard 1.2m × 2.4m unless specified otherwise."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Simple rectangular rooms need 10-15% waste for cuts around openings and corners. Complex layouts with many angles, curves, or obstacles need 15-20% waste. The calculator applies country-specific defaults but you can adjust."
+    },
+    {
+      "title": "Calculate Sheet Count",
+      "description": "The calculator shows: total area, number of sheets needed (including waste), and estimated weight. Standard 1.2m × 2.4m sheets cover 2.88 m² (31 ft²). Always round up to full sheets."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order 5-10% extra beyond calculated needs for future repairs and to ensure you have matching material. Store sheets flat and dry to prevent warping. Calculate joint compound, tape, and screws separately."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not subtracting doors and windows",
+      "solution": "Doors and windows can account for 10-20% of wall area. Not subtracting them leads to significant over-ordering. Always measure and subtract all openings accurately. Standard door: 2.0 m², single window: 1.5-2.5 m²."
+    },
+    {
+      "mistake": "Underestimating waste for complex layouts",
+      "solution": "Rooms with many angles, curves, or obstacles require 15-20% waste, not the standard 10-15%. Always add extra for cuts around corners, pipes, and irregular shapes."
+    },
+    {
+      "mistake": "Forgetting to calculate ceilings separately",
+      "solution": "Ceilings are calculated separately from walls. Measure ceiling area (length × width) and calculate sheets needed. Ceilings often need different thickness (typically 12.5mm vs 9.5mm for walls in some regions)."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 5-10% extra. Drywall gets damaged during construction, and you'll need matching sheets for repairs. Store leftovers in a dry, flat location to prevent warping."
+    }
+  ],
+  "proTips": [
+    "Buy all drywall from the same batch/manufacturer. Different batches can have slight thickness or texture variations that affect finishing.",
+    "For complex layouts, break rooms into rectangles and calculate each separately. Sum totals and add 15-20% waste for the entire project.",
+    "Calculate joint compound separately: typically 0.5-1kg per m² for first coat, 0.3-0.5kg for second coat. Tape: ~1.5m per linear meter of joint.",
+    "Plan sheet orientation to minimize waste. Horizontal installation (sheets mounted long-side horizontal) can reduce waste in some room configurations.",
+    "For moisture-prone areas (bathrooms, kitchens), use moisture-resistant drywall (green board) or cement board. Calculate separately as coverage may differ.",
+    "Keep sheets flat and dry during storage. Warped sheets are difficult to install and create gaps. Store on a flat surface, not leaning against walls."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Simple rectangular rooms: 10-15% waste. Complex layouts with many angles, curves, or obstacles: 15-20% waste. Always add 5-10% extra beyond calculated needs for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "Do I need different calculations for walls vs ceilings?",
+      "answer": "Yes, calculate separately. Walls: perimeter × height minus openings. Ceilings: length × width. Ceilings may need different thickness (12.5mm vs 9.5mm in some regions). Use appropriate thickness for each application."
+    },
+    {
+      "question": "What about joint compound and tape?",
+      "answer": "Calculate separately. Joint compound: 0.5-1kg per m² for first coat, 0.3-0.5kg for second coat. Tape: ~1.5m per linear meter of joint. Screws: ~30-40 per m². Add 10-15% waste for all finishing materials."
+    },
+    {
+      "question": "Should I order extra sheets?",
+      "answer": "Yes, order 5-10% extra from the same batch/manufacturer. Drywall gets damaged during construction, and you'll need matching sheets for repairs. Different batches can have slight variations."
+    },
+    {
+      "question": "What if my room has many angles or curves?",
+      "answer": "Complex layouts with many angles, curves, or obstacles require 15-20% waste instead of 10-15%. Break complex rooms into simple rectangles, calculate each separately, then sum totals and apply the higher waste factor."
+    },
+    {
+      "question": "Can I use this for moisture-resistant drywall?",
+      "answer": "Yes, but moisture-resistant drywall (green board) or cement board may have different coverage or thickness. Calculate based on actual sheet dimensions. Some regions use different standard sizes for moisture-resistant products."
+    },
+    {
+      "question": "How do I account for different sheet sizes?",
+      "answer": "Standard sizes: 1.2m × 2.4m (2.88 m²), 1.2m × 3.0m (3.6 m²), or 1.2m × 3.6m (4.32 m²). Larger sheets reduce waste but are harder to handle. The calculator uses standard 1.2m × 2.4m unless you specify otherwise."
+    },
+    {
+      "question": "What about fire-rated drywall?",
+      "answer": "Fire-rated drywall (Type X) has the same dimensions as standard drywall, so calculation method is identical. However, it's typically thicker (15mm vs 12.5mm) and heavier, which may affect handling and waste slightly."
+    }
+  ],
+  "relatedCalculators": ["paint", "wallpaper", "insulation", "electrical"],
+  "lastUpdated": "2025-12-18"
+}

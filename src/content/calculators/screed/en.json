@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact amount of screed material needed for floor leveling. Accounts for floor area, screed thickness, material type (cement, self-leveling, anhydrite), waste factors (typically 5-10% for standard applications), and country-specific coverage rates. Screed is typically applied 30-75mm (1.2-3in) thick depending on application. Supports both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Floor Area",
+      "description": "Measure room length and width at the widest points. For irregular rooms, break them into rectangles and measure each section. Standard residential rooms are 3-5m (10-16ft) wide and 4-6m (13-20ft) long. Include all areas: closets, alcoves, under-stair spaces."
+    },
+    {
+      "title": "Determine Screed Thickness",
+      "description": "Standard thickness: 40-50mm (1.6-2in) for most applications. Minimum: 30mm (1.2in) for light traffic, 50-75mm (2-3in) for heavy traffic or uneven substrates. Thicker screed = more material needed."
+    },
+    {
+      "title": "Select Screed Type",
+      "description": "Choose material: traditional cement screed (typical coverage 0.02-0.03 m³ per m² per 10mm thickness), self-leveling compound (varies by product), or anhydrite screed (similar to cement). Coverage depends on thickness and material density."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Standard applications need 5-10% waste for application losses, leveling variations, and edge work. Complex shapes or uneven substrates may need 10-15% waste. The calculator applies country-specific defaults."
+    },
+    {
+      "title": "Calculate Material Needed",
+      "description": "The calculator shows: total floor area, screed volume needed (including waste), and number of bags required. Always round up to full bags. Order 5-10% extra for future repairs."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all screed from the same batch for consistency. Buy 5-10% extra for future repairs. Store in a dry location. Calculate primer separately if required for the substrate."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not measuring at widest points",
+      "solution": "Always measure at the room's widest points, not just one corner. Rooms are rarely perfectly square, and measuring narrow points leads to material shortages."
+    },
+    {
+      "mistake": "Underestimating thickness requirements",
+      "solution": "Minimum thickness is 30mm (1.2in) for light traffic, 50-75mm (2-3in) for heavy traffic or uneven substrates. Thinner screed may crack or fail. Always verify thickness requirements with local building codes."
+    },
+    {
+      "mistake": "Forgetting to include small areas",
+      "solution": "Include all areas: closets, alcoves, under-stair spaces, and any nooks. These small areas add up and can account for 5-10% of total floor area."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 5-10% extra. Screed gets damaged during construction or renovations, and you'll need matching material for repairs. Different batches may have slight variations."
+    }
+  ],
+  "proTips": [
+    "Buy all screed from the same batch. Different batches can have slight density or color variations that affect finish consistency.",
+    "For uneven substrates, measure thickness at multiple points and use average. Very uneven floors may need thicker screed (50-75mm) to achieve level surface.",
+    "Calculate primer separately if required. Some substrates (concrete, wood) require primer before screeding. Primer coverage: typically 8-12 m² per liter.",
+    "Plan your application sequence. Screed needs proper curing time (typically 24-48 hours) before applying floor coverings. Factor this into your project timeline.",
+    "Keep 5-10% extra screed for future repairs. Store in a dry location in sealed containers to prevent moisture damage.",
+    "For self-leveling compounds, verify coverage with manufacturer specifications. Coverage varies significantly by product and thickness."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Standard applications: 5-10% waste. Complex shapes or uneven substrates: 10-15% waste. Always add 5-10% extra beyond calculated needs for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "What thickness should I use?",
+      "answer": "Standard: 40-50mm (1.6-2in) for most applications. Minimum: 30mm (1.2in) for light traffic, 50-75mm (2-3in) for heavy traffic or uneven substrates. Thicker screed provides better leveling but uses more material."
+    },
+    {
+      "question": "Do I need to calculate primer separately?",
+      "answer": "Yes, if required. Some substrates (concrete, wood) require primer before screeding. Primer coverage: typically 8-12 m² per liter. Check substrate requirements and manufacturer specifications."
+    },
+    {
+      "question": "Should I order extra screed?",
+      "answer": "Yes, order 5-10% extra from the same batch. Screed gets damaged during construction, and you'll need matching material for repairs. Different batches may have slight density or color variations."
+    },
+    {
+      "question": "What's the difference between cement and self-leveling screed?",
+      "answer": "Cement screed is traditional, requires manual leveling, typical coverage 0.02-0.03 m³ per m² per 10mm thickness. Self-leveling compound flows and levels itself, coverage varies by product. Both use the same area calculation, but coverage differs."
+    },
+    {
+      "question": "How do I account for uneven substrates?",
+      "answer": "Measure thickness at multiple points and use average. Very uneven floors may need thicker screed (50-75mm) to achieve level surface. Add 10-15% waste for very uneven substrates instead of standard 5-10%."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum totals. This helps identify waste factors per room and ensures accurate accounting for different room sizes, thickness requirements, and substrate conditions."
+    },
+    {
+      "question": "What about underfloor heating?",
+      "answer": "Screed over underfloor heating typically needs minimum 50mm (2in) thickness to protect pipes and ensure even heat distribution. Calculate based on actual thickness required, which may be thicker than standard applications."
+    }
+  ],
+  "relatedCalculators": ["concrete", "flooring", "tile", "brick"],
+  "lastUpdated": "2025-12-18"
+}

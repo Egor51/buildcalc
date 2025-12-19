@@ -1,0 +1,87 @@
+{
+  "intro": "Calculate the exact amount of flooring material needed for your project, whether hardwood, laminate, vinyl, tile, or carpet. The calculator accounts for room dimensions, waste factors (typically 5-10% for rectangular rooms, 10-15% for irregular shapes), and standard material widths. Supports both metric and imperial units with automatic conversion.",
+  "steps": [
+    {
+      "title": "Measure Room Dimensions",
+      "description": "Measure the length and width of the room at the widest points. For irregular rooms, break them into rectangles and measure each section. Standard residential rooms are 3-5m (10-16ft) wide and 4-6m (13-20ft) long."
+    },
+    {
+      "title": "Select Flooring Type",
+      "description": "Choose your material: hardwood planks (typically 10-15cm wide), laminate (12-20cm), vinyl tiles (30-60cm), or carpet rolls (3-4m wide). Each type has different waste factors and installation patterns."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Rectangular rooms need 5-10% waste for cuts and pattern matching. Irregular rooms, diagonal layouts, or herringbone patterns need 10-15% waste. The calculator applies country-specific defaults but you can adjust."
+    },
+    {
+      "title": "Calculate Material Needed",
+      "description": "The calculator shows total area, material needed including waste, and number of boxes/rolls required. For planks: divide by box coverage (typically 1.5-2.5 m² per box). Always round up to full boxes."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order 10-15% extra beyond calculated needs for future repairs and to ensure you have matching material from the same batch. Store leftovers in climate-controlled conditions."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not measuring at widest points",
+      "solution": "Always measure at the room's widest points, not just one corner. Rooms are rarely perfectly square, and measuring narrow points leads to material shortages."
+    },
+    {
+      "mistake": "Underestimating waste for irregular rooms",
+      "solution": "Irregular shapes, diagonal layouts, and pattern matching (herringbone, chevron) require 10-15% waste, not the standard 5-10%. Always add extra for complex layouts."
+    },
+    {
+      "mistake": "Forgetting to account for closets and alcoves",
+      "solution": "Include all areas: closets, alcoves, and under-stair spaces. These small areas add up and can account for 5-10% of total floor area."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 10-15% extra beyond calculated needs. Flooring manufacturers discontinue colors/styles, and you'll need matching material for future repairs or expansions."
+    }
+  ],
+  "proTips": [
+    "Buy all flooring from the same batch/lot number to ensure color consistency. Mixing batches can show slight color variations.",
+    "For diagonal or herringbone patterns, add 15-20% waste instead of the standard 10%. These patterns create more offcuts.",
+    "Measure and order underlayment separately. Most flooring requires underlayment (foam, cork, or specialized), which has its own coverage calculations.",
+    "For multi-room projects, calculate each room separately then sum totals. This helps identify which rooms need pattern matching.",
+    "Keep leftover boxes in climate-controlled storage. Temperature and humidity changes can affect flooring dimensions and cause gaps or buckling.",
+    "For hardwood, account for grain direction and board length. Longer boards reduce waste but may cost more. Plan your layout before ordering."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Rectangular rooms with straight layouts need 5-10% waste. Irregular rooms, diagonal patterns, or herringbone layouts need 10-15% waste. Always add 10-15% extra for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "Do I need to calculate underlayment separately?",
+      "answer": "Yes, underlayment (foam, cork, or specialized) is calculated separately. Most underlayment comes in rolls (typically 1m × 10-15m) or sheets. Calculate based on total floor area plus 5% for overlaps and cuts."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum the totals. This helps identify waste factors per room and ensures you account for different room shapes and sizes accurately."
+    },
+    {
+      "question": "What about closets and small spaces?",
+      "answer": "Include all areas: closets, alcoves, under-stair spaces, and any nooks. These small areas can add 5-10% to total floor area. Measure them accurately and include in your calculation."
+    },
+    {
+      "question": "Should I order extra for future repairs?",
+      "answer": "Yes, always order 10-15% extra. Flooring manufacturers discontinue colors and styles, and you'll need matching material for future repairs, expansions, or damage. Store leftovers properly."
+    },
+    {
+      "question": "How do I account for pattern matching?",
+      "answer": "Pattern matching (herringbone, chevron, or directional patterns) requires 15-20% waste instead of standard 10%. Plan your layout before ordering to minimize waste while maintaining pattern consistency."
+    },
+    {
+      "question": "What if my room is irregularly shaped?",
+      "answer": "Break irregular rooms into rectangles, calculate each section separately, then sum the totals. Add 10-15% waste for irregular shapes (instead of 5-10% for rectangular rooms)."
+    },
+    {
+      "question": "Do I need different calculations for different flooring types?",
+      "answer": "Yes, each type has different considerations: hardwood (grain direction, board length), laminate (box coverage, click-lock patterns), vinyl (tile size, sheet width), carpet (roll width, pattern repeat). Use the calculator's specific settings for each type."
+    }
+  ],
+  "relatedCalculators": ["tile", "screed", "insulation", "electrical"],
+  "lastUpdated": "2025-12-18"
+}

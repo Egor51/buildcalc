@@ -1,0 +1,91 @@
+{
+  "intro": "Calculate the exact amount of plaster needed for walls and ceilings. Accounts for surface area, number of coats, plaster type (gypsum, cement, lime), thickness per coat, waste factors (typically 10-15% for standard applications, 15-20% for textured finishes), and country-specific coverage rates. Supports both metric and imperial units.",
+  "steps": [
+    {
+      "title": "Measure Surface Area",
+      "description": "For walls: measure perimeter × height, subtract doors and windows. For ceilings: measure length × width. Use the same unit system throughout. Record all measurements consistently in meters or feet."
+    },
+    {
+      "title": "Select Plaster Type",
+      "description": "Choose material: gypsum plaster (typical coverage 1-1.5 m² per 25kg bag), cement plaster (0.8-1.2 m² per 25kg bag), or lime plaster (varies). Coverage depends on thickness and application method."
+    },
+    {
+      "title": "Determine Number of Coats",
+      "description": "Standard application: 2 coats (scratch coat + finish coat). Some applications need 3 coats (base + scratch + finish). Each coat typically 2-5mm thick. Thicker coats = more material needed."
+    },
+    {
+      "title": "Account for Waste Factor",
+      "description": "Standard smooth finishes need 10-15% waste for application losses and touch-ups. Textured finishes (stucco, decorative) need 15-20% waste due to thicker application and pattern work."
+    },
+    {
+      "title": "Calculate Material Needed",
+      "description": "The calculator shows: total area, plaster weight/volume needed (including waste), and number of bags required. Always round up to full bags. Order 5-10% extra for future repairs."
+    },
+    {
+      "title": "Order Materials",
+      "description": "Order all plaster from the same batch for color consistency. Buy 5-10% extra for future repairs. Store in a dry location. Calculate primer separately if required for the substrate."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Not accounting for number of coats",
+      "solution": "Each coat requires material. A 2-coat application needs roughly 2× the material of a single coat. Always specify number of coats accurately. Standard is 2 coats (scratch + finish), some applications need 3."
+    },
+    {
+      "mistake": "Forgetting to subtract openings",
+      "solution": "Doors and windows reduce plaster needs. Standard door: ~2.0 m², single window: 1.5-2.5 m². Always measure and subtract all openings accurately."
+    },
+    {
+      "mistake": "Underestimating waste for textured finishes",
+      "solution": "Textured finishes (stucco, decorative patterns) require 15-20% waste vs 10-15% for smooth finishes. Thicker application and pattern work increase material needs significantly."
+    },
+    {
+      "mistake": "Not ordering extra for future repairs",
+      "solution": "Always order 5-10% extra from the same batch. Plaster colors vary between batches, and you'll need matching material for future repairs or damage."
+    }
+  ],
+  "proTips": [
+    "Buy all plaster from the same batch. Color variations between batches are noticeable, especially with tinted or colored plasters.",
+    "For textured finishes (stucco, decorative), add 20% waste instead of 15%. Textured applications use more material due to thicker coats and pattern work.",
+    "Calculate primer separately if required. Some substrates (new drywall, masonry) require primer before plastering. Primer coverage: typically 8-12 m² per liter.",
+    "Plan your application sequence. Apply scratch coat first, let it cure, then apply finish coat. Allow proper curing time between coats per manufacturer instructions.",
+    "Keep 5-10% extra plaster for future repairs. Store in a dry location in sealed containers to prevent moisture damage.",
+    "For exterior applications, use weather-resistant plaster (cement-based). Interior applications typically use gypsum plaster. Coverage may differ between types."
+  ],
+  "faq": [
+    {
+      "question": "How much waste should I account for?",
+      "answer": "Standard smooth finishes: 10-15% waste. Textured finishes (stucco, decorative): 15-20% waste. Always add 5-10% extra beyond calculated needs for future repairs and to ensure batch matching."
+    },
+    {
+      "question": "Do I need to calculate primer separately?",
+      "answer": "Yes, if required. Some substrates (new drywall, masonry) require primer before plastering. Primer coverage: typically 8-12 m² per liter. Check substrate requirements and manufacturer specifications."
+    },
+    {
+      "question": "How many coats do I need?",
+      "answer": "Standard application: 2 coats (scratch coat + finish coat). Some applications need 3 coats (base + scratch + finish). Each coat typically 2-5mm thick. Thicker coats or textured finishes may require more material."
+    },
+    {
+      "question": "Should I order extra plaster?",
+      "answer": "Yes, order 5-10% extra from the same batch. Plaster colors vary between batches, and you'll need matching material for future repairs, damage, or expansion. Manufacturers discontinue colors regularly."
+    },
+    {
+      "question": "What's the difference between gypsum and cement plaster?",
+      "answer": "Gypsum plaster is for interior use, typically covers 1-1.5 m² per 25kg bag. Cement plaster is for exterior or wet areas, typically covers 0.8-1.2 m² per 25kg bag. Both use the same calculation method, but coverage differs."
+    },
+    {
+      "question": "How do I account for textured finishes?",
+      "answer": "Textured finishes (stucco, decorative patterns) require 15-20% waste instead of 10-15% for smooth finishes. Thicker application and pattern work increase material needs. Always use the higher waste factor for textured applications."
+    },
+    {
+      "question": "How do I calculate for multiple rooms?",
+      "answer": "Calculate each room separately, then sum totals. This helps identify waste factors per room and ensures accurate accounting for different room sizes, ceiling heights, and finish types."
+    },
+    {
+      "question": "What about exterior vs interior plaster?",
+      "answer": "Exterior plaster (cement-based) typically has lower coverage (0.8-1.2 m² per 25kg) than interior plaster (gypsum, 1-1.5 m² per 25kg). Use appropriate coverage rates for each application type."
+    }
+  ],
+  "relatedCalculators": ["paint", "wallpaper", "tile", "concrete"],
+  "lastUpdated": "2025-12-18"
+}
