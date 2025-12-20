@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/config/site";
 import { siteConfig } from "@/lib/config/site";
 import type { CalculatorRecord } from "@/lib/server/calculators";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.local";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.online";
 
 export function getCanonicalUrl(path: string): string {
   return `${baseUrl}${path}`;

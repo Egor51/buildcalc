@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.local";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.online";
 
 export default function robots(): MetadataRoute.Robots {
   return {

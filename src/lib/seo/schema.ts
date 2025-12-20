@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/config/site";
 import type { CalculatorRecord } from "@/lib/server/calculators";
 import type { CalculatorFaq } from "@/lib/calc/types";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.local";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.online";
 
 export function generateWebApplicationSchema(locale: Locale) {
   return {

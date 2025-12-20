@@ -4,7 +4,7 @@ import { CALCULATOR_DEFINITIONS } from "@/lib/calc/definitions";
 import { getCalculatorContent } from "@/lib/content/loader";
 import { getGuideContent } from "@/lib/content/guide-loader";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.local";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://buildcalc.online";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [];
