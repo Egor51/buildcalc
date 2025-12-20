@@ -92,6 +92,7 @@ async function loadGuideFile(
       title: frontmatter.title,
       description: frontmatter.description,
       lastUpdated: frontmatter.lastUpdated || new Date().toISOString(),
+      videoUrl: frontmatter.videoUrl, // Optional video URL
       content: body,
       headings,
     };

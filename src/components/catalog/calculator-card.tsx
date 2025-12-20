@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ArrowRight, Heart, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Heart, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -144,6 +144,12 @@ export const CalculatorCard = ({
             <Link href={`/${locale}/calc/${calculator.slug}`} className="justify-center">
               <span>{dictionary.home.cardCta}</span>
               <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </Button>
+          <Button variant="outline" size="sm" asChild className="flex-1 sm:flex-initial">
+            <Link href={`/${locale}/calc/${calculator.slug}/guide`}>
+              <BookOpen className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+              {dictionary.home.guideLink}
             </Link>
           </Button>
           {onFavorite ? (

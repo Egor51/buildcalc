@@ -304,6 +304,12 @@ body.menu-open {
   }
 }
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Offset for fixed headers */
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

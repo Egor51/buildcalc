@@ -17,6 +17,7 @@ import {
   Sparkles,
   Share2,
   Square,
+  BookOpen,
 } from "lucide-react";
 
 import { useCountry } from "@/components/providers/country-provider";
@@ -441,10 +442,20 @@ export const CalculatorRunner = ({
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">{calculator.category}</p>
             <div className="space-y-3">
-              <h1 className="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
-                {calculator.title}
-              </h1>
-              <p className="text-sm text-muted-foreground lg:text-base">{calculator.description}</p>
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                  <h1 className="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+                    {calculator.title}
+                  </h1>
+                  <p className="text-sm text-muted-foreground lg:text-base mt-2">{calculator.description}</p>
+                </div>
+                <Button variant="outline" size="sm" asChild className="shrink-0">
+                  <Link href={`/${locale}/calc/${calculator.slug}/guide`}>
+                    <BookOpen className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+                    {dictionary.home.guideLink}
+                  </Link>
+                </Button>
+              </div>
             </div>
             <div className="flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.35em]">
               <Badge variant="brand" className="text-[10px]">
@@ -739,11 +750,9 @@ export const CalculatorRunner = ({
                 <AccordionContent>{calculator.howItWorks}</AccordionContent>
               </AccordionItem>
             </Accordion>
-            {calculator.guide ? (
-              <Button variant="link" className="px-0" asChild>
-                <Link href={`/${locale}/calc/${calculator.slug}/guide`}>{dictionary.home.guideLink}</Link>
-              </Button>
-            ) : null}
+            <Button variant="link" className="px-0" asChild>
+              <Link href={`/${locale}/calc/${calculator.slug}/guide`}>{dictionary.home.guideLink}</Link>
+            </Button>
           </CardContent>
         </Card>
         <Card className="border-2 lg:col-span-2">

@@ -29,6 +29,7 @@ export type GuideContent = {
   description: string;
   lastUpdated: string; // ISO date string
   content: string; // MDX content
+  videoUrl?: string; // Optional YouTube video URL
   headings?: Array<{
     level: number;
     text: string;

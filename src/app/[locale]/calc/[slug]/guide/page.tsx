@@ -11,6 +11,7 @@ import { getGuideContent } from "@/lib/content/guide-loader";
 import { getRelatedCalculators } from "@/lib/content/loader";
 import { getCalculators } from "@/lib/server/calculators";
 import { MarkdownRenderer } from "@/components/content/markdown-renderer";
+import { YouTubeVideo } from "@/components/content/youtube-video";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CALCULATOR_DEFINITIONS } from "@/lib/calc/definitions";
@@ -125,6 +126,18 @@ export default async function GuidePage({ params }: PageProps) {
             </Link>
           </Button>
         </div>
+
+        {/* Video Section */}
+        {guideContent?.videoUrl && (
+          <Card className="border-border/60">
+            <CardContent className="p-4 sm:p-6">
+              <YouTubeVideo 
+                url={guideContent.videoUrl} 
+                title={guideContent.title}
+              />
+            </CardContent>
+          </Card>
+        )}
 
         {/* Table of Contents */}
         {guideContent?.headings && guideContent.headings.length > 0 && (

@@ -8,14 +8,35 @@ type MarkdownRendererProps = {
   content: string;
 };
 
+/**
+ * Generate ID from heading text (same logic as in guide-loader.ts)
+ */
+function generateHeadingId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
+
 export function MarkdownRenderer({ content }: MarkdownRendererProps) {
   // Simple markdown to HTML conversion
   let html = content;
 
-  // Headings
-  html = html.replace(/^### (.*$)/gim, '<h3 class="text-lg sm:text-xl font-semibold mt-4 sm:mt-6 mb-2 sm:mb-3">$1</h3>');
-  html = html.replace(/^## (.*$)/gim, '<h2 class="text-xl sm:text-2xl font-semibold mt-5 sm:mt-6 mb-3 sm:mb-4">$1</h2>');
-  html = html.replace(/^# (.*$)/gim, '<h1 class="text-2xl sm:text-3xl font-semibold mt-6 sm:mt-8 mb-4 sm:mb-5">$1</h1>');
+  // Headings with IDs for anchor links
+  html = html.replace(/^### (.*$)/gim, (match, text) => {
+    const id = generateHeadingId(text);
+    return `<h3 id="${id}" class="text-lg sm:text-xl font-semibold mt-4 sm:mt-6 mb-2 sm:mb-3 scroll-mt-20">${text}</h3>`;
+  });
+  html = html.replace(/^## (.*$)/gim, (match, text) => {
+    const id = generateHeadingId(text);
+    return `<h2 id="${id}" class="text-xl sm:text-2xl font-semibold mt-5 sm:mt-6 mb-3 sm:mb-4 scroll-mt-20">${text}</h2>`;
+  });
+  html = html.replace(/^# (.*$)/gim, (match, text) => {
+    const id = generateHeadingId(text);
+    return `<h1 id="${id}" class="text-2xl sm:text-3xl font-semibold mt-6 sm:mt-8 mb-4 sm:mb-5 scroll-mt-20">${text}</h1>`;
+  });
 
   // Bold
   html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
