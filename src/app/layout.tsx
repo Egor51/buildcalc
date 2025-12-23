@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: baseUrl,
     languages: {
-      "en": `${baseUrl}/en`,
-      "ru": `${baseUrl}/ru`,
+      en: `${baseUrl}/en`,
+      ru: `${baseUrl}/ru`,
       "x-default": `${baseUrl}/en`,
     },
   },
@@ -37,24 +37,13 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon_io-2/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon_io-2/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      // Отдаём крупные варианты сразу, чтобы браузеры не брали только 16×16
+      { url: "/favicon_io-2/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon_io-2/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
       { url: "/favicon_io-2/favicon.ico", sizes: "any" },
     ],
     apple: [
       { url: "/favicon_io-2/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        rel: "android-chrome",
-        url: "/favicon_io-2/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        rel: "android-chrome",
-        url: "/favicon_io-2/android-chrome-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
     ],
   },
   manifest: "/favicon_io-2/site.webmanifest",
