@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="BuildCalc favicon">
+  <defs>
+    <!-- warm construction gradient -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF7A18"/>
+      <stop offset="55%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#FFD54F"/>
+    </linearGradient>
+
+    <!-- subtle vignette for depth -->
+    <radialGradient id="vignette" cx="32" cy="24" r="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.00"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.18"/>
+    </radialGradient>
+
+    <!-- shadows -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+
+    <filter id="innerGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.2" flood-color="#fff" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- screen gradient -->
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFF3E0"/>
+      <stop offset="100%" stop-color="#FFE0B2"/>
+    </linearGradient>
+
+    <!-- accent (blueprint) -->
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#42A5F5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bgGrad)"/>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#vignette)"/>
+
+  <!-- calculator body -->
+  <g filter="url(#softShadow)">
+    <rect x="16" y="14" width="32" height="36" rx="8" fill="#FFFFFF"/>
+    <rect x="16" y="14" width="32" height="36" rx="8" fill="none" stroke="#000" stroke-opacity="0.08"/>
+  </g>
+
+  <!-- screen -->
+  <g>
+    <rect x="20" y="18" width="24" height="10" rx="3" fill="url(#screenGrad)"/>
+    <rect x="20" y="18" width="24" height="10" rx="3" fill="none" stroke="#E65100" stroke-opacity="0.12"/>
+    <!-- tiny signal line to suggest "calculator" without tiny text -->
+    <path d="M23 24.5h18" stroke="#E65100" stroke-opacity="0.55" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- buttons (simplified, bold) -->
+  <g>
+    <rect x="20.2" y="31" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+    <rect x="28.4" y="31" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+    <rect x="36.6" y="31" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+
+    <rect x="20.2" y="39.2" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+    <rect x="28.4" y="39.2" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+    <rect x="36.6" y="39.2" width="7.2" height="7.2" rx="2" fill="#FF9800"/>
+
+    <!-- subtle highlights -->
+    <g opacity="0.22" filter="url(#innerGlow)">
+      <path d="M22 32.2h3.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M30.2 32.2h3.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M38.4 32.2h3.6" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+  </g>
+  <!-- subtle approval dot -->
+  <g filter="url(#shadow)">
+    <circle cx="44.5" cy="16.5" r="4.2" fill="#2E7D32"/>
+    <path d="M42.8 16.6l1.3 1.3l2.5-2.6"
+          fill="none" stroke="#FFFFFF" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- construction/engineering mark: divider (compass) -->
+  <g filter="url(#softShadow)">
+    <!-- pivot -->
+    <circle cx="32" cy="14.8" r="4.2" fill="url(#accentGrad)"/>
+    <circle cx="32" cy="14.8" r="2.0" fill="#E3F2FD" opacity="0.95"/>
+
+    <!-- legs -->
+    <path d="M32 18.6 L23.5 44.8" stroke="#0D47A1" stroke-width="3.6" stroke-linecap="round"/>
+    <path d="M32 18.6 L40.5 44.8" stroke="#0D47A1" stroke-width="3.6" stroke-linecap="round"/>
+
+    <!-- tips -->
+    <path d="M22.3 47.2 L24.7 46.4 L23.4 43.8 Z" fill="#0D47A1"/>
+    <path d="M41.7 47.2 L39.3 46.4 L40.6 43.8 Z" fill="#0D47A1"/>
+
+    <!-- crossbar -->
+    <path d="M26.4 31.2 Q32 28.2 37.6 31.2" fill="none" stroke="url(#accentGrad)" stroke-width="3"
+          stroke-linecap="round"/>
+  </g>
+</svg>
