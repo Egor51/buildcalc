@@ -177,26 +177,35 @@ export function generateGuideMetadata(
   calculator: CalculatorRecord,
   locale: Locale,
   path: string,
+  guideTitle?: string | null,
+  guideDescription?: string | null,
 ): Metadata {
-  const title = locale === "ru"
-    ? `Руководство: ${calculator.title} — ${siteConfig.name}`
-    : `Guide: ${calculator.title} — ${siteConfig.name}`;
+  const trimmedGuideTitle = guideTitle?.trim();
+  const fallbackTitle =
+    locale === "ru" ? `Руководство: ${calculator.title}` : `Guide: ${calculator.title}`;
+  const pageTitle = trimmedGuideTitle && trimmedGuideTitle.length > 0 ? trimmedGuideTitle : fallbackTitle;
+  const fullTitle = pageTitle.includes(siteConfig.name) ? pageTitle : `${pageTitle} — ${siteConfig.name}`;
 
-  const description = locale === "ru"
+  // Use guideDescription from MDX file if available, otherwise use fallback
+  const trimmedGuideDescription = guideDescription?.trim();
+  const fallbackDescription = locale === "ru"
     ? `Подробное руководство по использованию калькулятора ${calculator.title}. Пошаговая инструкция, советы и частые ошибки.`
     : `Complete guide for ${calculator.title} calculator. Step-by-step instructions, tips, and common mistakes.`;
+  const description = trimmedGuideDescription && trimmedGuideDescription.length > 0 
+    ? trimmedGuideDescription 
+    : fallbackDescription;
 
   const alternates = getAlternateLocales(path);
 
   return {
-    title,
+    title: { absolute: fullTitle },
     description,
     alternates: {
       canonical: getCanonicalUrl(path),
       languages: alternates,
     },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       type: "article",
       locale: locale === "ru" ? "ru_RU" : "en_US",
@@ -208,13 +217,13 @@ export function generateGuideMetadata(
           url: `${baseUrl}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: fullTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
       images: [`${baseUrl}/og-image.png`],
     },

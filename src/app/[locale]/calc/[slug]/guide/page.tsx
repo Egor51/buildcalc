@@ -34,24 +34,39 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
+  
   const { locale, slug } = await params;
-  if (!locales.includes(locale as Locale)) {
-    return generateGuideMetadata(
-      { id: "", title: "", description: "", slug: "", category: "", rating: 0, formulaKey: "", wasteKey: "", inputs: [], faq: [], resultLabels: [], howItWorks: "" },
-      "en",
-      "/en/calc/unknown/guide",
-    );
-  }
-  const normalizedLocale = locale as Locale;
+  const safeSlug = slug || "unknown";
+  const normalizedLocale = locales.includes(locale as Locale) ? (locale as Locale) : "en";
   const calculator = await getCalculatorBySlug(normalizedLocale, slug);
-  if (!calculator?.guide) {
-    return generateGuideMetadata(
-      { id: "", title: "", description: "", slug: "", category: "", rating: 0, formulaKey: "", wasteKey: "", inputs: [], faq: [], resultLabels: [], howItWorks: "" },
-      normalizedLocale,
-      `/${normalizedLocale}/calc/unknown/guide`,
-    );
-  }
-  return generateGuideMetadata(calculator, normalizedLocale, `/${normalizedLocale}/calc/${slug}/guide`);
+  
+  // Always try to load guide content from MDX file
+  const guideContent = await getGuideContent(slug, normalizedLocale);
+  
+  // Create a minimal calculator object if calculator is not found
+  const calculatorForMetadata = calculator || {
+    id: "",
+    title: safeSlug,
+    description: "",
+    slug: safeSlug,
+    category: "",
+    rating: 0,
+    formulaKey: "",
+    wasteKey: "",
+    inputs: [],
+    faq: [],
+    resultLabels: [],
+    howItWorks: "",
+  };
+  
+  // Pass guideContent title/description directly - fallback logic is in generateGuideMetadata
+  return generateGuideMetadata(
+    calculatorForMetadata,
+    normalizedLocale,
+    `/${normalizedLocale}/calc/${slug}/guide`,
+    guideContent?.title || null,
+    guideContent?.description || null,
+  );
 }
 
 export default async function GuidePage({ params }: PageProps) {
