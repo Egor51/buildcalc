@@ -56,4 +56,4 @@ pnpm dev
 - No DB dependency by default. If you want persistence, re-enable Prisma and point `DATABASE_URL` to PostgreSQL before deploying (`pnpm prisma migrate deploy`).
 - Shadcn uses the New York theme + TailwindCSS 3 – adjust `tailwind.config.ts` if you add more UI primitives.
 - When running Prisma commands later, ensure outbound HTTPS so the CLI can download native engines.
-
+- Optional host allowlist: set `ALLOWED_HOSTS` (comma-separated) to reject unexpected `Host` headers with `403 Host not permitted`.
